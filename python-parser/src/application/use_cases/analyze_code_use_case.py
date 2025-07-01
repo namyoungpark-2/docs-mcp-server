@@ -10,6 +10,11 @@ from ...domain.entities.code_chunk import CodeChunk
 from ...domain.repositories.symbol_repository import SymbolRepository
 from ...infrastructure.parsers.hybrid_parser import HybridParser
 from ...infrastructure.parsers.python_parser import PythonParser
+from ...infrastructure.repositories.memory_symbol_repository import (
+    MemorySymbolRepository,
+)
+from ...infrastructure.repositories.memory_call_repository import MemoryCallRepository
+from ...infrastructure.repositories.memory_chunk_repository import MemoryChunkRepository
 
 
 @dataclass
@@ -41,14 +46,64 @@ class AnalysisResult:
 class AnalyzeCodeUseCase:
     """코드 분석 유스케이스"""
 
-    def __init__(self):
+    def __init__(
+        self,
+        symbol_repository: Optional[SymbolRepository] = None,
+        call_repository: Optional[CallRepository] = None,
+        chunk_repository: Optional[ChunkRepository] = None,
+    ):
         self.hybrid_parser = HybridParser()
         self.python_parser = PythonParser()
-        self.symbol_repository = SymbolRepository()
-        self.call_repository = CallRepository()
-        self.chunk_repository = ChunkRepository()
+        self.symbol_repository = symbol_repository or MemorySymbolRepository()
+        self.call_repository = call_repository or MemoryCallRepository()
+        self.chunk_repository = chunk_repository or MemoryChunkRepository()
 
-    def execute(self, file_path: str, analysis_type: str = "hybrid") -> Dict[str, Any]:
+    def execute(self, request: AnalysisRequest) -> AnalysisResult:
+        """프로젝트 분석 실행"""
+        import time
+
+        start_time = time.time()
+
+        # 기존 데이터 클리어
+        self._clear_existing_data()
+
+        # 프로젝트 파일 스캔
+        files = self._scan_project_files(request)
+
+        all_symbols = []
+        all_calls = []
+        all_chunks = []
+
+        # 각 파일 분석
+        for file_path in files:
+            try:
+                symbols, calls, chunks = self._analyze_file(file_path, request)
+                all_symbols.extend(symbols)
+                all_calls.extend(calls)
+                all_chunks.extend(chunks)
+            except Exception as e:
+                print(f"파일 분석 중 오류 발생: {file_path} - {e}")
+                continue
+
+        # 결과 저장
+        self._save_analysis_results(all_symbols, all_calls, all_chunks)
+
+        # 통계 생성
+        statistics = self._generate_statistics(all_symbols, all_calls, all_chunks)
+
+        duration = time.time() - start_time
+
+        return AnalysisResult(
+            symbols=all_symbols,
+            calls=all_calls,
+            chunks=all_chunks,
+            statistics=statistics,
+            duration=duration,
+        )
+
+    def execute_file(
+        self, file_path: str, analysis_type: str = "hybrid"
+    ) -> Dict[str, Any]:
         """파일 분석 실행"""
         path = Path(file_path)
 

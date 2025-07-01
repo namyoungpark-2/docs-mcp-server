@@ -392,7 +392,7 @@ async def analyze_file(
 ):
     """파일 분석 엔드포인트 - 하이브리드 파서 사용"""
     try:
-        result = analyze_use_case.execute(file_path, analysis_type)
+        result = analyze_use_case.execute_file(file_path, analysis_type)
         return {
             "success": True,
             "file_path": file_path,
