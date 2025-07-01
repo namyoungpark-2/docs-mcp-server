@@ -7,7 +7,7 @@ from ...domain.repositories.chunk_repository import ChunkRepository
 from ...domain.entities.code_symbol import CodeSymbol
 from ...domain.entities.call_relationship import CallRelationship
 from ...domain.entities.code_chunk import CodeChunk
-from ...domain.repositories.code_symbol_repository import CodeSymbolRepository
+from ...domain.repositories.symbol_repository import SymbolRepository
 from ...infrastructure.parsers.hybrid_parser import HybridParser
 from ...infrastructure.parsers.python_parser import PythonParser
 
@@ -44,7 +44,7 @@ class AnalyzeCodeUseCase:
     def __init__(self):
         self.hybrid_parser = HybridParser()
         self.python_parser = PythonParser()
-        self.symbol_repository = CodeSymbolRepository()
+        self.symbol_repository = SymbolRepository()
         self.call_repository = CallRepository()
         self.chunk_repository = ChunkRepository()
 
