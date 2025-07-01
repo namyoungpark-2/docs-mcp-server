@@ -1,0 +1,5775 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "UCMS API",
+    "description": "UCMS-BE OpenAPI spec",
+    "version": "v1"
+  },
+  "host": "testserver",
+  "schemes": ["http"],
+  "basePath": "/api/v1",
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "Basic": {
+      "type": "basic"
+    }
+  },
+  "security": [
+    {
+      "Basic": []
+    }
+  ],
+  "paths": {
+    "/accounts/admin/users/": {
+      "get": {
+        "operationId": "accounts_admin_users_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/AdminUser"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "post": {
+        "operationId": "accounts_admin_users_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminUser"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AdminUser"
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": []
+    },
+    "/accounts/admin/users/{id}/": {
+      "get": {
+        "operationId": "accounts_admin_users_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AdminUser"
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "put": {
+        "operationId": "accounts_admin_users_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AdminUser"
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "patch": {
+        "operationId": "accounts_admin_users_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AdminUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AdminUser"
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "delete": {
+        "operationId": "accounts_admin_users_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this user.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/accounts/admin/users/{user_id}/roles/": {
+      "get": {
+        "operationId": "accounts_admin_users_roles_list",
+        "summary": "\uc0ac\uc6a9\uc790-\uc5ed\ud560 \ubaa9\ub85d \uc870\ud68c",
+        "description": "\ud2b9\uc815 \uc0ac\uc6a9\uc790\uc758 \ud2b9\uc815 \ud504\ub85c\uc81d\ud2b8\uc5d0 \ub300\ud55c \uc5ed\ud560 \ub9e4\ud551\uc744 \uc870\ud68c\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserRole"
+              }
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "post": {
+        "operationId": "accounts_admin_users_roles_create",
+        "summary": "\uc0ac\uc6a9\uc790-\uc5ed\ud560 \uc0dd\uc131",
+        "description": "\ud2b9\uc815 \uc0ac\uc6a9\uc790\uc758 \ud2b9\uc815 \uc5ed\ud560\ub4e4\uc744 \uc0dd\uc131\ud569\ub2c8\ub2e4.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "role_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserRole"
+              }
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "patch": {
+        "operationId": "accounts_admin_users_roles_partial_update",
+        "summary": "\uc0ac\uc6a9\uc790-\uc5ed\ud560 \uc218\uc815",
+        "description": "\ud2b9\uc815 \uc0ac\uc6a9\uc790\uc758 \ud2b9\uc815 \uc5ed\ud560\uc744 \uc218\uc815\ud569\ub2c8\ub2e4.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserRole"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Update success"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/accounts/admin/users/{user_id}/roles/{id}/": {
+      "delete": {
+        "operationId": "accounts_admin_users_roles_delete",
+        "summary": "\uc0ac\uc6a9\uc790-\uc5ed\ud560 \uc0ad\uc81c",
+        "description": "\ud2b9\uc815 \uc0ac\uc6a9\uc790\uc758 \ud2b9\uc815 \uc5ed\ud560\uc744 \uc0ad\uc81c\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": [
+        {
+          "name": "user_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/accounts/login/": {
+      "post": {
+        "operationId": "accounts_login_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": []
+    },
+    "/accounts/logout/": {
+      "post": {
+        "operationId": "accounts_logout_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": []
+    },
+    "/accounts/token/refresh/": {
+      "post": {
+        "operationId": "accounts_token_refresh_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": []
+    },
+    "/accounts/user/": {
+      "get": {
+        "operationId": "accounts_user_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/User"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "put": {
+        "operationId": "accounts_user_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "patch": {
+        "operationId": "accounts_user_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": []
+    },
+    "/accounts/user/password/": {
+      "patch": {
+        "operationId": "accounts_user_password_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PasswordUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PasswordUpdate"
+            }
+          }
+        },
+        "tags": ["accounts"]
+      },
+      "parameters": []
+    },
+    "/cast/": {
+      "get": {
+        "operationId": "cast_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "contents__id",
+            "in": "query",
+            "description": "contents__id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "seasons__id",
+            "in": "query",
+            "description": "seasons__id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "series__id",
+            "in": "query",
+            "description": "series__id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/CastRetrieve"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["cast"]
+      },
+      "post": {
+        "operationId": "cast_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Cast"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Cast"
+            }
+          }
+        },
+        "tags": ["cast"]
+      },
+      "parameters": []
+    },
+    "/cast/{id}/": {
+      "get": {
+        "operationId": "cast_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CastRetrieve"
+            }
+          }
+        },
+        "tags": ["cast"]
+      },
+      "put": {
+        "operationId": "cast_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Cast"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Cast"
+            }
+          }
+        },
+        "tags": ["cast"]
+      },
+      "patch": {
+        "operationId": "cast_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Cast"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Cast"
+            }
+          }
+        },
+        "tags": ["cast"]
+      },
+      "delete": {
+        "operationId": "cast_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["cast"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/category/": {
+      "get": {
+        "operationId": "category_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Category"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["category"]
+      },
+      "post": {
+        "operationId": "category_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        },
+        "tags": ["category"]
+      },
+      "parameters": []
+    },
+    "/category/{id}/": {
+      "get": {
+        "operationId": "category_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        },
+        "tags": ["category"]
+      },
+      "put": {
+        "operationId": "category_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        },
+        "tags": ["category"]
+      },
+      "patch": {
+        "operationId": "category_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        },
+        "tags": ["category"]
+      },
+      "delete": {
+        "operationId": "category_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["category"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/content/": {
+      "get": {
+        "operationId": "content_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Content"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "post": {
+        "operationId": "content_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": []
+    },
+    "/content/bulk-distribution/": {
+      "post": {
+        "operationId": "content_bulk_distribution",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": []
+    },
+    "/content/direct-upload-multipart/complete/": {
+      "post": {
+        "operationId": "content_direct-upload-multipart_complete_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CompleteInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": []
+    },
+    "/content/direct-upload-multipart/pre-signed-url/": {
+      "post": {
+        "operationId": "content_direct-upload-multipart_pre-signed-url_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PreSignedInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "presigned_url": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": []
+    },
+    "/content/direct-upload-multipart/start/": {
+      "post": {
+        "operationId": "content_direct-upload-multipart_start_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StartInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "contentId": {
+                  "type": "integer"
+                },
+                "uploadId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": []
+    },
+    "/content/sync/": {
+      "get": {
+        "operationId": "content_sync_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": []
+    },
+    "/content/sync/complete/": {
+      "patch": {
+        "operationId": "content_sync_complete_partial_update",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": []
+    },
+    "/content/video-status/": {
+      "get": {
+        "operationId": "content_video-status_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "content__id",
+            "in": "query",
+            "description": "content__id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/VideoStatus"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "post": {
+        "operationId": "content_video-status_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VideoStatus"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VideoStatus"
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": []
+    },
+    "/content/video-status/{id}/": {
+      "get": {
+        "operationId": "content_video-status_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VideoStatus"
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "put": {
+        "operationId": "content_video-status_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VideoStatus"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VideoStatus"
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "patch": {
+        "operationId": "content_video-status_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VideoStatus"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VideoStatus"
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "delete": {
+        "operationId": "content_video-status_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this video status.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/content/{id}/": {
+      "get": {
+        "operationId": "content_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "put": {
+        "operationId": "content_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "patch": {
+        "operationId": "content_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "delete": {
+        "operationId": "content_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this Content.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/content/{id}/category/": {
+      "get": {
+        "operationId": "content_category_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/content/{id}/category/{category_id}/": {
+      "post": {
+        "operationId": "content_category_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "delete": {
+        "operationId": "content_category_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "category_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/content/{id}/contract/": {
+      "get": {
+        "operationId": "content_contract_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/content/{id}/dubbing/": {
+      "get": {
+        "operationId": "content_dubbing_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "post": {
+        "operationId": "content_dubbing_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/content/{id}/dubbing/{dubbing_id}/": {
+      "delete": {
+        "operationId": "content_dubbing_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "dubbing_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/content/{id}/embedded-subtitle-transcode/": {
+      "post": {
+        "operationId": "content_embedded_subtitle_transcode",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this Content.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/content/{id}/subtitle/": {
+      "get": {
+        "operationId": "content_subtitle_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "post": {
+        "operationId": "content_subtitle_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/content/{id}/subtitle/{subtitle_id}/": {
+      "patch": {
+        "operationId": "content_subtitle_partial_update",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "delete": {
+        "operationId": "content_subtitle_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "subtitle_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/content/{id}/thumbnail/": {
+      "get": {
+        "operationId": "content_thumbnail_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "post": {
+        "operationId": "content_thumbnail_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/content/{id}/thumbnail/{thumbnail_id}/": {
+      "patch": {
+        "operationId": "content_thumbnail_partial_update",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "delete": {
+        "operationId": "content_thumbnail_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "thumbnail_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/content/{id}/update-content-duration/": {
+      "post": {
+        "operationId": "content_update_content_duration",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this Content.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/content/{id}/video-transcode/": {
+      "post": {
+        "operationId": "content_video_transcode",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this Content.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/contracts/": {
+      "get": {
+        "operationId": "contracts_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "post": {
+        "operationId": "contracts_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "parameters": []
+    },
+    "/contracts/export/": {
+      "get": {
+        "operationId": "contracts_export",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "parameters": []
+    },
+    "/contracts/upload/": {
+      "post": {
+        "operationId": "contracts_upload_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "parameters": []
+    },
+    "/contracts/{contract_pk}/terms/": {
+      "get": {
+        "operationId": "contracts_terms_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "post": {
+        "operationId": "contracts_terms_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "parameters": [
+        {
+          "name": "contract_pk",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/contracts/{contract_pk}/terms/{id}/": {
+      "get": {
+        "operationId": "contracts_terms_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "put": {
+        "operationId": "contracts_terms_update",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "delete": {
+        "operationId": "contracts_terms_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "parameters": [
+        {
+          "name": "contract_pk",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/contracts/{contract_pk}/terms/{id}/items/": {
+      "get": {
+        "operationId": "contracts_terms_items_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "post": {
+        "operationId": "contracts_terms_items_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "delete": {
+        "operationId": "contracts_terms_items_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "parameters": [
+        {
+          "name": "contract_pk",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/contracts/{id}/": {
+      "get": {
+        "operationId": "contracts_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "put": {
+        "operationId": "contracts_update",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "delete": {
+        "operationId": "contracts_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["contracts"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/menus/menus/": {
+      "get": {
+        "operationId": "menus_menus_list",
+        "summary": "\uba54\ub274 \ubaa9\ub85d \uc870\ud68c",
+        "description": "\ubaa8\ub4e0 \uba54\ub274(Menu) \ub9ac\uc2a4\ud2b8\ub97c \ubc18\ud658\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Menu"
+              }
+            }
+          }
+        },
+        "tags": ["menus"]
+      },
+      "post": {
+        "operationId": "menus_menus_create",
+        "summary": "\uba54\ub274 \uc0dd\uc131",
+        "description": "\uc0c8\ub85c\uc6b4 \uba54\ub274\ub97c \uc0dd\uc131\ud569\ub2c8\ub2e4.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Menu"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Menu"
+            }
+          }
+        },
+        "tags": ["menus"]
+      },
+      "parameters": []
+    },
+    "/menus/menus/{id}/": {
+      "get": {
+        "operationId": "menus_menus_read",
+        "summary": "\ud2b9\uc815 \uba54\ub274 \uc870\ud68c",
+        "description": "\uba54\ub274 ID\ub97c \ud1b5\ud574 \ud2b9\uc815 \uba54\ub274\ub97c \uc870\ud68c\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Menu"
+            }
+          },
+          "404": {
+            "description": "Menu not found"
+          }
+        },
+        "tags": ["menus"]
+      },
+      "put": {
+        "operationId": "menus_menus_update",
+        "summary": "\uba54\ub274 \uc218\uc815",
+        "description": "\uba54\ub274 ID\ub97c \ud1b5\ud574 \ud2b9\uc815 \uba54\ub274\ub97c \uc218\uc815\ud569\ub2c8\ub2e4.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Menu"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Menu"
+            }
+          }
+        },
+        "tags": ["menus"]
+      },
+      "delete": {
+        "operationId": "menus_menus_delete",
+        "summary": "\uba54\ub274 \uc0ad\uc81c",
+        "description": "\uba54\ub274 ID\ub97c \ud1b5\ud574 \ud2b9\uc815 \uba54\ub274\ub97c \uc0ad\uc81c\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Menu not found"
+          }
+        },
+        "tags": ["menus"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/permissions/": {
+      "get": {
+        "operationId": "permissions_list",
+        "summary": "\uad8c\ud55c \ubaa9\ub85d \uc870\ud68c",
+        "description": "\ubaa8\ub4e0 \uad8c\ud55c(Permission) \ub9ac\uc2a4\ud2b8\ub97c \ubc18\ud658\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Permission"
+              }
+            }
+          }
+        },
+        "tags": ["permissions"]
+      },
+      "post": {
+        "operationId": "permissions_create",
+        "summary": "\uad8c\ud55c \uc0dd\uc131",
+        "description": "\uc0c8\ub85c\uc6b4 \uad8c\ud55c\uc744 \uc0dd\uc131\ud569\ub2c8\ub2e4.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Permission"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Permission"
+            }
+          }
+        },
+        "tags": ["permissions"]
+      },
+      "parameters": []
+    },
+    "/permissions/{id}/": {
+      "get": {
+        "operationId": "permissions_read",
+        "summary": "\ud2b9\uc815 \uad8c\ud55c \uc870\ud68c",
+        "description": "\uad8c\ud55c ID\ub97c \ud1b5\ud574 \ud2b9\uc815 \uad8c\ud55c\uc744 \uc870\ud68c\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Permission"
+            }
+          },
+          "404": {
+            "description": "Permission not found"
+          }
+        },
+        "tags": ["permissions"]
+      },
+      "delete": {
+        "operationId": "permissions_delete",
+        "summary": "\ud2b9\uc815 \uad8c\ud55c \uc0ad\uc81c",
+        "description": "\uad8c\ud55c ID\ub97c \ud1b5\ud574 \ud2b9\uc815 \uad8c\ud55c\uc744 \uc0ad\uc81c\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Permission not found"
+          }
+        },
+        "tags": ["permissions"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/playlist-content/": {
+      "get": {
+        "operationId": "playlist-content_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page_test",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Content"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["playlist-content"]
+      },
+      "post": {
+        "operationId": "playlist-content_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["playlist-content"]
+      },
+      "parameters": []
+    },
+    "/playlist-content/add-rule/": {
+      "post": {
+        "operationId": "playlist-content_add_rule",
+        "description": "PlaylistRule \uc0dd\uc131",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["playlist-content"]
+      },
+      "parameters": []
+    },
+    "/playlist-content/{id}/": {
+      "get": {
+        "operationId": "playlist-content_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["playlist-content"]
+      },
+      "put": {
+        "operationId": "playlist-content_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["playlist-content"]
+      },
+      "patch": {
+        "operationId": "playlist-content_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["playlist-content"]
+      },
+      "delete": {
+        "operationId": "playlist-content_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["playlist-content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/playlist-content/{id}/rules/": {
+      "get": {
+        "operationId": "playlist-content_get_rules",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["playlist-content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/playlist-content/{id}/upsert-rule/": {
+      "patch": {
+        "operationId": "playlist-content_upsert_rule",
+        "description": "PlaylistRule \uc5c5\ub370\uc774\ud2b8",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Content"
+            }
+          }
+        },
+        "tags": ["playlist-content"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/playlist/": {
+      "get": {
+        "operationId": "playlist_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Playlist"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["playlist"]
+      },
+      "post": {
+        "operationId": "playlist_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Playlist"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Playlist"
+            }
+          }
+        },
+        "tags": ["playlist"]
+      },
+      "parameters": []
+    },
+    "/playlist/{id}/": {
+      "get": {
+        "operationId": "playlist_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Playlist"
+            }
+          }
+        },
+        "tags": ["playlist"]
+      },
+      "put": {
+        "operationId": "playlist_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Playlist"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Playlist"
+            }
+          }
+        },
+        "tags": ["playlist"]
+      },
+      "patch": {
+        "operationId": "playlist_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Playlist"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Playlist"
+            }
+          }
+        },
+        "tags": ["playlist"]
+      },
+      "delete": {
+        "operationId": "playlist_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["playlist"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/playlist/{id}/mrss/{serviceName}": {
+      "get": {
+        "operationId": "playlist_mrss_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["playlist"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "serviceName",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/projects/companies/": {
+      "get": {
+        "operationId": "projects_companies_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Company"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["projects"]
+      },
+      "post": {
+        "operationId": "projects_companies_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Company"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Company"
+            }
+          }
+        },
+        "tags": ["projects"]
+      },
+      "parameters": []
+    },
+    "/projects/companies/{id}/": {
+      "get": {
+        "operationId": "projects_companies_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Company"
+            }
+          }
+        },
+        "tags": ["projects"]
+      },
+      "put": {
+        "operationId": "projects_companies_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Company"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Company"
+            }
+          }
+        },
+        "tags": ["projects"]
+      },
+      "patch": {
+        "operationId": "projects_companies_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Company"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Company"
+            }
+          }
+        },
+        "tags": ["projects"]
+      },
+      "delete": {
+        "operationId": "projects_companies_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["projects"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this company.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/projects/platform/{platform_id}/company/": {
+      "get": {
+        "operationId": "projects_platform_company_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Company"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["projects"]
+      },
+      "parameters": [
+        {
+          "name": "platform_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/projects/platforms/": {
+      "get": {
+        "operationId": "projects_platforms_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Platform"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["projects"]
+      },
+      "post": {
+        "operationId": "projects_platforms_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Platform"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Platform"
+            }
+          }
+        },
+        "tags": ["projects"]
+      },
+      "parameters": []
+    },
+    "/projects/platforms/{id}/": {
+      "get": {
+        "operationId": "projects_platforms_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Platform"
+            }
+          }
+        },
+        "tags": ["projects"]
+      },
+      "put": {
+        "operationId": "projects_platforms_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Platform"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Platform"
+            }
+          }
+        },
+        "tags": ["projects"]
+      },
+      "patch": {
+        "operationId": "projects_platforms_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Platform"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Platform"
+            }
+          }
+        },
+        "tags": ["projects"]
+      },
+      "delete": {
+        "operationId": "projects_platforms_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["projects"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this platform.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/revenues/": {
+      "get": {
+        "operationId": "revenues_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["revenues"]
+      },
+      "parameters": []
+    },
+    "/revenues/generate_test_data/": {
+      "post": {
+        "operationId": "revenues_generate_test_data",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["revenues"]
+      },
+      "parameters": []
+    },
+    "/revenues/share/": {
+      "get": {
+        "operationId": "revenues_share_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["revenues"]
+      },
+      "parameters": []
+    },
+    "/revenues/share/sync/": {
+      "post": {
+        "operationId": "revenues_share_sync",
+        "description": "Revenue Share \ub370\uc774\ud130 \ub3d9\uae30\ud654",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["revenues"]
+      },
+      "parameters": []
+    },
+    "/revenues/sync/": {
+      "post": {
+        "operationId": "revenues_sync",
+        "description": "Revenue \ub370\uc774\ud130 \ub3d9\uae30\ud654",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["revenues"]
+      },
+      "parameters": []
+    },
+    "/roles/": {
+      "get": {
+        "operationId": "roles_list",
+        "summary": "\uc5ed\ud560 \ubaa9\ub85d \uc870\ud68c",
+        "description": "\ubaa8\ub4e0 \uc5ed\ud560(Role) \ub9ac\uc2a4\ud2b8\ub97c \ubc18\ud658\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Role"
+              }
+            }
+          }
+        },
+        "tags": ["roles"]
+      },
+      "post": {
+        "operationId": "roles_create",
+        "summary": "\uc5ed\ud560 \uc0dd\uc131",
+        "description": "\uc0c8\ub85c\uc6b4 \uc5ed\ud560\uc744 \uc0dd\uc131\ud569\ub2c8\ub2e4.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          }
+        },
+        "tags": ["roles"]
+      },
+      "parameters": []
+    },
+    "/roles/{id}/": {
+      "get": {
+        "operationId": "roles_read",
+        "summary": "\ud2b9\uc815 \uc5ed\ud560 \uc870\ud68c",
+        "description": "\uc5ed\ud560 ID\ub97c \ud1b5\ud574 \ud2b9\uc815 \uc5ed\ud560\uc744 \uc870\ud68c\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          },
+          "404": {
+            "description": "Role not found"
+          }
+        },
+        "tags": ["roles"]
+      },
+      "patch": {
+        "operationId": "roles_partial_update",
+        "summary": "\uc5ed\ud560 \uc218\uc815",
+        "description": "\uc5ed\ud560 ID\ub97c \ud1b5\ud574 \ud2b9\uc815 \uc5ed\ud560\uc744 \uc218\uc815\ud569\ub2c8\ub2e4.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          }
+        },
+        "tags": ["roles"]
+      },
+      "delete": {
+        "operationId": "roles_delete",
+        "summary": "\uc5ed\ud560 \uc0ad\uc81c",
+        "description": "\uc5ed\ud560 ID\ub97c \ud1b5\ud574 \ud2b9\uc815 \uc5ed\ud560\uc744 \uc0ad\uc81c\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Role not found"
+          }
+        },
+        "tags": ["roles"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/roles/{role_id}/permissions/": {
+      "get": {
+        "operationId": "roles_permissions_list",
+        "summary": "\uc5ed\ud560 \uad8c\ud55c \ubaa9\ub85d \uc870\ud68c",
+        "description": "\ubaa8\ub4e0 \uc5ed\ud560 \uad8c\ud55c(RolePermission) \ub9ac\uc2a4\ud2b8\ub97c \ubc18\ud658\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RolePermission"
+              }
+            }
+          }
+        },
+        "tags": ["roles"]
+      },
+      "post": {
+        "operationId": "roles_permissions_create",
+        "summary": "\uc5ed\ud560 \uad8c\ud55c \uc0dd\uc131",
+        "description": "\uc0c8\ub85c\uc6b4 \uc5ed\ud560 \uad8c\ud55c\uc744 \uc0dd\uc131\ud569\ub2c8\ub2e4.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RolePermission"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RolePermission"
+            }
+          }
+        },
+        "tags": ["roles"]
+      },
+      "patch": {
+        "operationId": "roles_permissions_partial_update",
+        "summary": "\uc5ed\ud560 \uad8c\ud55c \uc218\uc815",
+        "description": "\uc5ed\ud560\uc758 \ubaa8\ub4e0 \uad8c\ud55c\uc744 \uc0c8\ub85c\uc6b4 \uad8c\ud55c \ubaa9\ub85d\uc73c\ub85c \uc5c5\ub370\uc774\ud2b8\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RolePermission"
+              }
+            }
+          }
+        },
+        "tags": ["roles"]
+      },
+      "parameters": [
+        {
+          "name": "role_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/roles/{role_id}/permissions/{id}/": {
+      "get": {
+        "operationId": "roles_permissions_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["roles"]
+      },
+      "put": {
+        "operationId": "roles_permissions_update",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["roles"]
+      },
+      "delete": {
+        "operationId": "roles_permissions_delete",
+        "summary": "\uc5ed\ud560 \uad8c\ud55c \uc0ad\uc81c",
+        "description": "\uc5ed\ud560 \uad8c\ud55c ID\ub97c \ud1b5\ud574 \ud2b9\uc815 \uc5ed\ud560 \uad8c\ud55c\uc744 \uc0ad\uc81c\ud569\ub2c8\ub2e4.",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "RolePermission not found"
+          }
+        },
+        "tags": ["roles"]
+      },
+      "parameters": [
+        {
+          "name": "role_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/season/": {
+      "get": {
+        "operationId": "season_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Season"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["season"]
+      },
+      "post": {
+        "operationId": "season_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Season"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Season"
+            }
+          }
+        },
+        "tags": ["season"]
+      },
+      "parameters": []
+    },
+    "/season/bulk-distribution/": {
+      "post": {
+        "operationId": "season_bulk_distribution",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Season"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Season"
+            }
+          }
+        },
+        "tags": ["season"]
+      },
+      "parameters": []
+    },
+    "/season/{id}/": {
+      "get": {
+        "operationId": "season_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Season"
+            }
+          }
+        },
+        "tags": ["season"]
+      },
+      "put": {
+        "operationId": "season_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Season"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Season"
+            }
+          }
+        },
+        "tags": ["season"]
+      },
+      "patch": {
+        "operationId": "season_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Season"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Season"
+            }
+          }
+        },
+        "tags": ["season"]
+      },
+      "delete": {
+        "operationId": "season_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["season"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/season/{id}/poster/": {
+      "get": {
+        "operationId": "season_poster_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["season"]
+      },
+      "post": {
+        "operationId": "season_poster_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["season"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/season/{id}/poster/{poster_id}/": {
+      "patch": {
+        "operationId": "season_poster_partial_update",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["season"]
+      },
+      "delete": {
+        "operationId": "season_poster_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["season"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "poster_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/series/": {
+      "get": {
+        "operationId": "series_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Series"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["series"]
+      },
+      "post": {
+        "operationId": "series_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Series"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Series"
+            }
+          }
+        },
+        "tags": ["series"]
+      },
+      "parameters": []
+    },
+    "/series/{id}/": {
+      "get": {
+        "operationId": "series_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Series"
+            }
+          }
+        },
+        "tags": ["series"]
+      },
+      "put": {
+        "operationId": "series_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Series"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Series"
+            }
+          }
+        },
+        "tags": ["series"]
+      },
+      "patch": {
+        "operationId": "series_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Series"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Series"
+            }
+          }
+        },
+        "tags": ["series"]
+      },
+      "delete": {
+        "operationId": "series_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["series"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/series/{id}/poster/": {
+      "get": {
+        "operationId": "series_poster_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["series"]
+      },
+      "post": {
+        "operationId": "series_poster_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["series"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/series/{id}/poster/{poster_id}/": {
+      "patch": {
+        "operationId": "series_poster_partial_update",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["series"]
+      },
+      "delete": {
+        "operationId": "series_poster_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["series"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "poster_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/series/{id}/seasons/": {
+      "get": {
+        "operationId": "series_seasons_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["series"]
+      },
+      "post": {
+        "operationId": "series_seasons_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["series"]
+      },
+      "patch": {
+        "operationId": "series_seasons_partial_update",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["series"]
+      },
+      "delete": {
+        "operationId": "series_seasons_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["series"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/video-source/": {
+      "get": {
+        "operationId": "video-source_list",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/VideoSource"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["video-source"]
+      },
+      "post": {
+        "operationId": "video-source_create",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VideoSource"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VideoSource"
+            }
+          }
+        },
+        "tags": ["video-source"]
+      },
+      "parameters": []
+    },
+    "/video-source/odk-bulk/": {
+      "post": {
+        "operationId": "video-source_odk_bulk",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VideoSource"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VideoSource"
+            }
+          }
+        },
+        "tags": ["video-source"]
+      },
+      "parameters": []
+    },
+    "/video-source/odk/": {
+      "get": {
+        "operationId": "video-source_odk",
+        "description": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "required": ["count", "results"],
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "next": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "previous": {
+                  "type": "string",
+                  "format": "uri",
+                  "x-nullable": true
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/VideoSource"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": ["video-source"]
+      },
+      "parameters": []
+    },
+    "/video-source/{id}/": {
+      "get": {
+        "operationId": "video-source_read",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VideoSource"
+            }
+          }
+        },
+        "tags": ["video-source"]
+      },
+      "put": {
+        "operationId": "video-source_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VideoSource"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VideoSource"
+            }
+          }
+        },
+        "tags": ["video-source"]
+      },
+      "patch": {
+        "operationId": "video-source_partial_update",
+        "description": "",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VideoSource"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/VideoSource"
+            }
+          }
+        },
+        "tags": ["video-source"]
+      },
+      "delete": {
+        "operationId": "video-source_delete",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": ["video-source"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "A unique integer value identifying this Video Source.",
+          "required": true,
+          "type": "integer"
+        }
+      ]
+    },
+    "/video-source/{id}/batch/": {
+      "post": {
+        "operationId": "video-source_batch_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["video-source"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/video-source/{id}/generate/": {
+      "post": {
+        "operationId": "video-source_generate_create",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["video-source"]
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/video-source/{video_source_id}/video-list/": {
+      "get": {
+        "operationId": "video-source_video-list_list",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["video-source"]
+      },
+      "parameters": [
+        {
+          "name": "video_source_id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "AdminUser": {
+      "required": ["username", "email", "first_name", "last_name"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "username": {
+          "title": "Username",
+          "type": "string",
+          "minLength": 1
+        },
+        "email": {
+          "title": "Email",
+          "type": "string",
+          "format": "email",
+          "minLength": 1
+        },
+        "first_name": {
+          "title": "First name",
+          "type": "string",
+          "minLength": 1
+        },
+        "last_name": {
+          "title": "Last name",
+          "type": "string",
+          "minLength": 1
+        },
+        "company": {
+          "title": "Company",
+          "type": "string",
+          "readOnly": true
+        },
+        "platform": {
+          "title": "Platform",
+          "type": "string",
+          "readOnly": true
+        },
+        "company_id": {
+          "title": "Company id",
+          "type": "integer"
+        }
+      }
+    },
+    "Role": {
+      "required": ["name"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "type": "string",
+          "x-nullable": true
+        },
+        "permissions": {
+          "title": "Permissions",
+          "type": "string",
+          "readOnly": true
+        },
+        "permission_ids": {
+          "title": "Permission ids",
+          "type": "string"
+        }
+      }
+    },
+    "UserRole": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "$ref": "#/definitions/Role"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "username": {
+          "title": "Username",
+          "description": "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.",
+          "type": "string",
+          "readOnly": true,
+          "minLength": 1
+        },
+        "email": {
+          "title": "Email address",
+          "type": "string",
+          "format": "email",
+          "maxLength": 254
+        },
+        "first_name": {
+          "title": "First name",
+          "type": "string",
+          "maxLength": 150
+        },
+        "last_name": {
+          "title": "Last name",
+          "type": "string",
+          "maxLength": 150
+        },
+        "is_staff": {
+          "title": "Staff status",
+          "description": "Designates whether the user can log into this admin site.",
+          "type": "boolean"
+        },
+        "company": {
+          "title": "Company",
+          "type": "string",
+          "readOnly": true
+        },
+        "platform": {
+          "title": "Platform",
+          "type": "string",
+          "readOnly": true
+        },
+        "permissions": {
+          "title": "Permissions",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "PasswordUpdate": {
+      "required": ["old_password", "new_password"],
+      "type": "object",
+      "properties": {
+        "old_password": {
+          "title": "Old password",
+          "type": "string",
+          "minLength": 1
+        },
+        "new_password": {
+          "title": "New password",
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "CastRetrieve": {
+      "required": ["name"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "name_en": {
+          "title": "Name en",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "slug": {
+          "title": "Slug",
+          "type": "string",
+          "maxLength": 256,
+          "x-nullable": true
+        },
+        "gender": {
+          "title": "Gender",
+          "type": "string",
+          "maxLength": 10,
+          "x-nullable": true
+        },
+        "birth_date": {
+          "title": "Birth date",
+          "type": "string",
+          "format": "date",
+          "x-nullable": true
+        },
+        "death_date": {
+          "title": "Death date",
+          "type": "string",
+          "format": "date",
+          "x-nullable": true
+        },
+        "nationality": {
+          "title": "Nationality",
+          "type": "string",
+          "maxLength": 100,
+          "x-nullable": true
+        },
+        "official_site": {
+          "title": "Official site",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "sns_link": {
+          "title": "Sns link",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "thumbnail": {
+          "title": "Thumbnail",
+          "type": "string",
+          "readOnly": true
+        },
+        "type": {
+          "title": "Type",
+          "type": "string",
+          "enum": [
+            "actor",
+            "director",
+            "writer",
+            "producer",
+            "composer",
+            "voice_actor"
+          ]
+        }
+      }
+    },
+    "Cast": {
+      "required": ["name"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "name_en": {
+          "title": "Name en",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "slug": {
+          "title": "Slug",
+          "type": "string",
+          "maxLength": 256,
+          "x-nullable": true
+        },
+        "gender": {
+          "title": "Gender",
+          "type": "string",
+          "maxLength": 10,
+          "x-nullable": true
+        },
+        "birth_date": {
+          "title": "Birth date",
+          "type": "string",
+          "format": "date",
+          "x-nullable": true
+        },
+        "death_date": {
+          "title": "Death date",
+          "type": "string",
+          "format": "date",
+          "x-nullable": true
+        },
+        "nationality": {
+          "title": "Nationality",
+          "type": "string",
+          "maxLength": 100,
+          "x-nullable": true
+        },
+        "official_site": {
+          "title": "Official site",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "sns_link": {
+          "title": "Sns link",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "thumbnail": {
+          "title": "Thumbnail",
+          "type": "string",
+          "readOnly": true,
+          "format": "uri"
+        },
+        "type": {
+          "title": "Type",
+          "type": "string",
+          "enum": [
+            "actor",
+            "director",
+            "writer",
+            "producer",
+            "composer",
+            "voice_actor"
+          ]
+        }
+      }
+    },
+    "Category": {
+      "required": ["name"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "type": "string",
+          "x-nullable": true
+        }
+      }
+    },
+    "StreamManifest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "type": {
+          "title": "Type",
+          "type": "string",
+          "enum": ["hls", "hls-new", "hls-odk", "widevine", "fairplay"]
+        },
+        "preset": {
+          "title": "Preset",
+          "type": "string",
+          "enum": ["1080p", "720p", "480p", "360p"],
+          "x-nullable": true
+        },
+        "stream_url": {
+          "title": "Stream url",
+          "type": "string",
+          "readOnly": true
+        },
+        "status": {
+          "title": "Status",
+          "type": "string",
+          "enum": ["empty", "in_progress", "completed", "failed"]
+        },
+        "signed_url": {
+          "title": "Signed url",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "ContentsFile": {
+      "type": "object",
+      "properties": {
+        "file_name": {
+          "title": "File name",
+          "type": "string",
+          "maxLength": 255
+        },
+        "file_size": {
+          "title": "File size",
+          "type": "integer",
+          "maximum": 9223372036854775807,
+          "minimum": -9223372036854775808,
+          "x-nullable": true
+        },
+        "file_type": {
+          "title": "File type",
+          "type": "string",
+          "maxLength": 50
+        },
+        "file": {
+          "title": "File",
+          "type": "string",
+          "readOnly": true
+        },
+        "external_url": {
+          "title": "External url",
+          "type": "string",
+          "format": "uri",
+          "maxLength": 500,
+          "x-nullable": true
+        }
+      }
+    },
+    "ODKMeta": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "created": {
+          "title": "Created",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "modified": {
+          "title": "Modified",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "uuid": {
+          "title": "Uuid",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "slug": {
+          "title": "Slug",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "service_name": {
+          "title": "Service name",
+          "type": "string",
+          "maxLength": 32,
+          "x-nullable": true
+        },
+        "episode_id": {
+          "title": "Episode id",
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "x-nullable": true
+        },
+        "episode_kind": {
+          "title": "Episode kind",
+          "type": "string",
+          "maxLength": 32,
+          "x-nullable": true
+        },
+        "episode_number": {
+          "title": "Episode number",
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "x-nullable": true
+        },
+        "episode_part": {
+          "title": "Episode part",
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "x-nullable": true
+        },
+        "episode_season": {
+          "title": "Episode season",
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "x-nullable": true
+        },
+        "episode_enable": {
+          "title": "Episode enable",
+          "type": "boolean"
+        },
+        "episode_publish_start": {
+          "title": "Episode publish start",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "episode_publish_end": {
+          "title": "Episode publish end",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "ingest_source": {
+          "title": "Ingest source",
+          "type": "string",
+          "maxLength": 32,
+          "x-nullable": true
+        },
+        "program_id": {
+          "title": "Program id",
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "x-nullable": true
+        },
+        "on_air_date": {
+          "title": "On air date",
+          "type": "string",
+          "format": "date",
+          "x-nullable": true
+        },
+        "is_kocowa": {
+          "title": "Is kocowa",
+          "type": "boolean"
+        }
+      }
+    },
+    "Distribution": {
+      "type": "object",
+      "properties": {
+        "content_consumer_name": {
+          "title": "Content consumer name",
+          "type": "string",
+          "maxLength": 100,
+          "x-nullable": true
+        },
+        "created": {
+          "title": "Created",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "modified": {
+          "title": "Modified",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        }
+      }
+    },
+    "Content": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "title_en": {
+          "title": "Title en",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "slug": {
+          "title": "Slug",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "genre": {
+          "title": "Genre",
+          "type": "string",
+          "maxLength": 100,
+          "x-nullable": true
+        },
+        "duration": {
+          "title": "Duration",
+          "type": "string",
+          "readOnly": true
+        },
+        "synopsis": {
+          "title": "Synopsis",
+          "type": "string",
+          "x-nullable": true
+        },
+        "synopsis_en": {
+          "title": "Synopsis en",
+          "type": "string",
+          "x-nullable": true
+        },
+        "release_date_start": {
+          "title": "Release date start",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "release_date_end": {
+          "title": "Release date end",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "thumbnail": {
+          "title": "Thumbnail",
+          "type": "string",
+          "readOnly": true
+        },
+        "active": {
+          "title": "Active",
+          "type": "string",
+          "readOnly": true
+        },
+        "source_id": {
+          "title": "Source id",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "gracenote_id": {
+          "title": "Gracenote id",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "episode_order": {
+          "title": "Episode order",
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": 0,
+          "x-nullable": true
+        },
+        "discovery_id": {
+          "title": "Discovery id",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "season": {
+          "title": "Season",
+          "type": "integer",
+          "x-nullable": true
+        },
+        "cast": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "uniqueItems": true
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "uniqueItems": true
+        },
+        "mature_content": {
+          "title": "Mature content",
+          "type": "boolean"
+        },
+        "program_guide": {
+          "title": "Program guide",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "produce_country": {
+          "title": "Produce country",
+          "type": "string",
+          "enum": ["KR", "CN", "US"],
+          "x-nullable": true
+        },
+        "language": {
+          "title": "Language",
+          "type": "string",
+          "enum": ["ko", "en", "ja", "zh-hans", "zh-hant"],
+          "x-nullable": true
+        },
+        "upload_source": {
+          "title": "Upload source",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "on_air": {
+          "title": "On air",
+          "type": "boolean"
+        },
+        "on_air_date": {
+          "title": "On air date",
+          "type": "string",
+          "format": "date",
+          "x-nullable": true
+        },
+        "drm_source": {
+          "title": "Drm source",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "payment_type": {
+          "title": "Payment type",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "regions": {
+          "title": "Regions",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "localizations": {
+          "title": "Localizations",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "audio_info": {
+          "title": "Audio info",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "resolution_info": {
+          "title": "Resolution info",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "film_code": {
+          "title": "Film code",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "available_country_group": {
+          "title": "Available country group",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "license_start": {
+          "title": "License start",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "license_end": {
+          "title": "License end",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "additional_keywords": {
+          "title": "Additional keywords",
+          "type": "string",
+          "x-nullable": true
+        },
+        "custom_keywords": {
+          "title": "Custom keywords",
+          "type": "object",
+          "x-nullable": true
+        },
+        "content_stream_manifests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StreamManifest"
+          },
+          "readOnly": true
+        },
+        "content_type": {
+          "title": "Content type",
+          "type": "string",
+          "enum": [
+            "movie",
+            "tv-series",
+            "trailer",
+            "additional",
+            "clip",
+            "unknown"
+          ]
+        },
+        "age_rating": {
+          "title": "Age rating",
+          "type": "string",
+          "enum": [
+            "All",
+            "PG",
+            "R12",
+            "R13",
+            "R14",
+            "R15",
+            "R16",
+            "R17",
+            "R18",
+            "R19",
+            "NR"
+          ]
+        },
+        "status": {
+          "title": "Status",
+          "type": "string",
+          "enum": ["draft", "published", "unpublished"],
+          "x-nullable": true
+        },
+        "dubbing_mode": {
+          "title": "Dubbing mode",
+          "type": "string",
+          "enum": ["inherit", "enabled", "disabled"]
+        },
+        "contents_file": {
+          "$ref": "#/definitions/ContentsFile"
+        },
+        "created": {
+          "title": "Created",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "modified": {
+          "title": "Modified",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "odk_meta": {
+          "$ref": "#/definitions/ODKMeta"
+        },
+        "platform": {
+          "title": "Platform",
+          "type": "string",
+          "readOnly": true
+        },
+        "distributions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Distribution"
+          },
+          "readOnly": true
+        },
+        "subtitles": {
+          "title": "Subtitles",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "CompleteInput": {
+      "required": ["file_name", "upload_id", "content_id", "parts"],
+      "type": "object",
+      "properties": {
+        "file_name": {
+          "title": "File name",
+          "type": "string",
+          "minLength": 1
+        },
+        "upload_id": {
+          "title": "Upload id",
+          "type": "string",
+          "minLength": 1
+        },
+        "content_id": {
+          "title": "Content id",
+          "type": "integer"
+        },
+        "parts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "PreSignedInput": {
+      "required": ["file_name", "upload_id", "content_id", "part_number"],
+      "type": "object",
+      "properties": {
+        "file_name": {
+          "title": "File name",
+          "type": "string",
+          "minLength": 1
+        },
+        "upload_id": {
+          "title": "Upload id",
+          "type": "string",
+          "minLength": 1
+        },
+        "content_id": {
+          "title": "Content id",
+          "type": "integer"
+        },
+        "part_number": {
+          "title": "Part number",
+          "type": "integer"
+        }
+      }
+    },
+    "StartInput": {
+      "required": ["file_name", "file_type", "file_size", "content_provider"],
+      "type": "object",
+      "properties": {
+        "file_name": {
+          "title": "File name",
+          "type": "string",
+          "minLength": 1
+        },
+        "file_type": {
+          "title": "File type",
+          "type": "string",
+          "minLength": 1
+        },
+        "file_size": {
+          "title": "File size",
+          "type": "integer"
+        },
+        "synopsis": {
+          "title": "Synopsis",
+          "type": "string",
+          "default": "",
+          "x-nullable": true
+        },
+        "content_provider": {
+          "title": "Content provider",
+          "type": "string",
+          "minLength": 1
+        },
+        "content_id": {
+          "title": "Content id",
+          "type": "integer",
+          "x-nullable": true
+        }
+      }
+    },
+    "VideoStatus": {
+      "required": ["content"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "created": {
+          "title": "Created",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "modified": {
+          "title": "Modified",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "action": {
+          "title": "Action",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "extra_info": {
+          "title": "Extra info",
+          "type": "object",
+          "x-nullable": true
+        },
+        "status": {
+          "title": "Status",
+          "type": "string",
+          "enum": ["START", "IN_PROGRESS", "FAILED", "COMPLETED"],
+          "x-nullable": true
+        },
+        "content": {
+          "title": "Content",
+          "type": "integer"
+        }
+      }
+    },
+    "Menu": {
+      "required": ["name"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "permission": {
+          "title": "Permission",
+          "type": "integer",
+          "x-nullable": true
+        }
+      }
+    },
+    "Permission": {
+      "required": ["name", "code"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "Name",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "code": {
+          "title": "Code",
+          "type": "string",
+          "maxLength": 100,
+          "minLength": 1
+        }
+      }
+    },
+    "Playlist": {
+      "required": ["title", "platform_id"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "type": {
+          "title": "Type",
+          "type": "string",
+          "enum": ["dynamic", "manual"]
+        },
+        "platform_id": {
+          "title": "Platform id",
+          "type": "integer"
+        },
+        "created": {
+          "title": "Created",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "modified": {
+          "title": "Modified",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        }
+      }
+    },
+    "Platform": {
+      "required": ["title"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "title_en": {
+          "title": "Title en",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "type": "string",
+          "x-nullable": true
+        },
+        "slug": {
+          "title": "Slug",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1,
+          "x-nullable": true
+        },
+        "country": {
+          "title": "Country",
+          "type": "string",
+          "maxLength": 50,
+          "minLength": 1,
+          "x-nullable": true
+        },
+        "domain": {
+          "title": "Domain",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1,
+          "x-nullable": true
+        },
+        "logo": {
+          "title": "Logo",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1,
+          "x-nullable": true
+        }
+      }
+    },
+    "Company": {
+      "required": ["title", "slug", "country"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "title_en": {
+          "title": "Title en",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "type": "string",
+          "x-nullable": true
+        },
+        "slug": {
+          "title": "Slug",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "country": {
+          "title": "Country",
+          "type": "string",
+          "maxLength": 50,
+          "minLength": 1
+        },
+        "type": {
+          "title": "Type",
+          "type": "string",
+          "enum": ["cp", "pp"]
+        },
+        "person_in_charge": {
+          "title": "Person in charge",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "person_in_charge_email_address": {
+          "title": "Person in charge email address",
+          "type": "string",
+          "format": "email",
+          "maxLength": 254,
+          "x-nullable": true
+        },
+        "platform": {
+          "$ref": "#/definitions/Platform"
+        },
+        "platform_id": {
+          "title": "Platform id",
+          "type": "integer"
+        }
+      }
+    },
+    "RolePermission": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "role": {
+          "title": "Role",
+          "type": "string",
+          "readOnly": true
+        },
+        "permission": {
+          "$ref": "#/definitions/Permission"
+        },
+        "created": {
+          "title": "Created",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "modified": {
+          "title": "Modified",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        }
+      }
+    },
+    "SeasonPoster": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "file": {
+          "title": "File",
+          "type": "string",
+          "readOnly": true
+        },
+        "is_representative": {
+          "title": "Is representative",
+          "type": "boolean"
+        },
+        "orientation": {
+          "title": "Orientation",
+          "type": "string",
+          "enum": ["landscape", "portrait"]
+        },
+        "language": {
+          "title": "Language",
+          "type": "string",
+          "enum": ["ko", "en", "ja", "zh-hans", "zh-hant"]
+        }
+      }
+    },
+    "ODKProgramMeta": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "created": {
+          "title": "Created",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "modified": {
+          "title": "Modified",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "program_id": {
+          "title": "Program id",
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "x-nullable": true
+        },
+        "program_slug": {
+          "title": "Program slug",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "program_image": {
+          "title": "Program image",
+          "type": "object",
+          "x-nullable": true
+        },
+        "program_enable": {
+          "title": "Program enable",
+          "type": "boolean"
+        },
+        "ingest_source": {
+          "title": "Ingest source",
+          "type": "string",
+          "maxLength": 32,
+          "x-nullable": true
+        },
+        "program_release_start": {
+          "title": "Program release start",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "program_release_end": {
+          "title": "Program release end",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "program_publish_start": {
+          "title": "Program publish start",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "program_publish_end": {
+          "title": "Program publish end",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "program_cp": {
+          "title": "Program cp",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        }
+      }
+    },
+    "Season": {
+      "required": ["title"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "title_en": {
+          "title": "Title en",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "synopsis": {
+          "title": "Synopsis",
+          "type": "string",
+          "x-nullable": true
+        },
+        "synopsis_en": {
+          "title": "Synopsis en",
+          "type": "string",
+          "x-nullable": true
+        },
+        "status": {
+          "title": "Status",
+          "type": "string",
+          "enum": ["draft", "published", "unpublished"],
+          "x-nullable": true
+        },
+        "dubbing_mode": {
+          "title": "Dubbing mode",
+          "type": "string",
+          "enum": ["inherit", "enabled", "disabled"]
+        },
+        "slug": {
+          "title": "Slug",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "season_order": {
+          "title": "Season order",
+          "type": "integer",
+          "maximum": 2147483647,
+          "minimum": 0,
+          "x-nullable": true
+        },
+        "age_rating": {
+          "title": "Age rating",
+          "type": "string",
+          "enum": [
+            "All",
+            "PG",
+            "R12",
+            "R13",
+            "R14",
+            "R15",
+            "R16",
+            "R17",
+            "R18",
+            "R19",
+            "NR"
+          ]
+        },
+        "release_date_start": {
+          "title": "Release date start",
+          "type": "string",
+          "format": "date",
+          "x-nullable": true
+        },
+        "release_date_end": {
+          "title": "Release date end",
+          "type": "string",
+          "format": "date",
+          "x-nullable": true
+        },
+        "poster": {
+          "title": "Poster",
+          "type": "string",
+          "readOnly": true
+        },
+        "posters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SeasonPoster"
+          },
+          "readOnly": true
+        },
+        "cast": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "uniqueItems": true
+        },
+        "series": {
+          "title": "Series",
+          "type": "integer"
+        },
+        "contents": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "uniqueItems": true
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "uniqueItems": true
+        },
+        "program_meta": {
+          "$ref": "#/definitions/ODKProgramMeta"
+        },
+        "is_deletable": {
+          "title": "Is deletable",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "SeriesPoster": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "file": {
+          "title": "File",
+          "type": "string",
+          "readOnly": true
+        },
+        "is_representative": {
+          "title": "Is representative",
+          "type": "boolean"
+        },
+        "orientation": {
+          "title": "Orientation",
+          "type": "string",
+          "enum": ["landscape", "portrait"]
+        },
+        "language": {
+          "title": "Language",
+          "type": "string",
+          "enum": ["ko", "en", "ja", "zh-hans", "zh-hant"]
+        }
+      }
+    },
+    "Series": {
+      "required": ["title"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "title": {
+          "title": "Title",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "title_en": {
+          "title": "Title en",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "synopsis": {
+          "title": "Synopsis",
+          "type": "string",
+          "x-nullable": true
+        },
+        "synopsis_en": {
+          "title": "Synopsis en",
+          "type": "string",
+          "x-nullable": true
+        },
+        "status": {
+          "title": "Status",
+          "type": "string",
+          "enum": ["draft", "published", "unpublished"],
+          "x-nullable": true
+        },
+        "dubbing_mode": {
+          "title": "Dubbing mode",
+          "type": "string",
+          "enum": ["inherit", "enabled", "disabled"]
+        },
+        "slug": {
+          "title": "Slug",
+          "type": "string",
+          "maxLength": 255,
+          "x-nullable": true
+        },
+        "release_date_start": {
+          "title": "Release date start",
+          "type": "string",
+          "format": "date",
+          "x-nullable": true
+        },
+        "release_date_end": {
+          "title": "Release date end",
+          "type": "string",
+          "format": "date",
+          "x-nullable": true
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "uniqueItems": true
+        },
+        "poster": {
+          "title": "Poster",
+          "type": "string",
+          "readOnly": true
+        },
+        "posters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SeriesPoster"
+          },
+          "readOnly": true
+        },
+        "cast": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "uniqueItems": true
+        },
+        "age_rating": {
+          "title": "Age rating",
+          "type": "string",
+          "enum": [
+            "All",
+            "PG",
+            "R12",
+            "R13",
+            "R14",
+            "R15",
+            "R16",
+            "R17",
+            "R18",
+            "R19",
+            "NR"
+          ]
+        },
+        "produce_country": {
+          "title": "Produce country",
+          "type": "string",
+          "enum": ["KR", "CN", "US"],
+          "x-nullable": true
+        },
+        "seasons": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "uniqueItems": true
+        },
+        "is_deletable": {
+          "title": "Is deletable",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "VideoSource": {
+      "required": ["name", "mrss_url", "category", "platform"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "type": "integer",
+          "readOnly": true
+        },
+        "name": {
+          "title": "\uac00\uc838\uc624\uae30 \uc774\ub984",
+          "type": "string",
+          "maxLength": 255,
+          "minLength": 1
+        },
+        "mrss_url": {
+          "title": "MRSS URL",
+          "type": "string",
+          "format": "uri",
+          "maxLength": 500,
+          "minLength": 1
+        },
+        "category": {
+          "title": "\uce74\ud14c\uace0\ub9ac",
+          "type": "string",
+          "maxLength": 100,
+          "minLength": 1
+        },
+        "category_values": {
+          "title": "\uce74\ud14c\uace0\ub9ac \uac12",
+          "type": "string"
+        },
+        "import_from": {
+          "title": "\uac00\uc838\uc624\uae30 \uc2dc\uc791 \uc2dc\uac04",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "import_to": {
+          "title": "\uac00\uc838\uc624\uae30 \uc885\ub8cc \uc2dc\uac04",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "auto_add_videos": {
+          "title": "\ube44\ub514\uc624 \uc790\ub3d9 \ucd94\uac00",
+          "type": "boolean"
+        },
+        "auto_activate_videos": {
+          "title": "\ube44\ub514\uc624 \uc790\ub3d9 \ud65c\uc131\ud654",
+          "type": "boolean"
+        },
+        "auto_update_videos": {
+          "title": "\ube44\ub514\uc624 \uc790\ub3d9 \uc5c5\ub370\uc774\ud2b8",
+          "type": "boolean"
+        },
+        "auto_update_custom_thumbnails": {
+          "title": "\uc0ac\uc6a9\uc790 \uc9c0\uc815 \uc378\ub124\uc77c \uc790\ub3d9 \uc5c5\ub370\uc774\ud2b8",
+          "type": "boolean"
+        },
+        "auto_update_video_data_sources": {
+          "title": "\ube44\ub514\uc624 \ub370\uc774\ud130 \uc18c\uc2a4 \uc790\ub3d9 \uc5c5\ub370\uc774\ud2b8",
+          "type": "boolean"
+        },
+        "auto_deactivate_video_data_sources": {
+          "title": "\ube44\ub514\uc624 \ub370\uc774\ud130 \uc18c\uc2a4 \uc790\ub3d9 \ube44\ud65c\uc131\ud654",
+          "type": "boolean"
+        },
+        "sync_interval": {
+          "title": "\ub3d9\uae30\ud654 \uac04\uaca9",
+          "type": "string",
+          "maxLength": 50,
+          "minLength": 1
+        },
+        "headers": {
+          "title": "\uc0ac\uc6a9\uc790 \uc9c0\uc815 \ud5e4\ub354",
+          "type": "string"
+        },
+        "transcode_profile": {
+          "title": "\ud2b8\ub79c\uc2a4\ucf54\ub4dc \ud504\ub85c\ud544",
+          "type": "string",
+          "maxLength": 100
+        },
+        "active": {
+          "title": "\ud65c\uc131\ud654",
+          "type": "boolean"
+        },
+        "import_setting": {
+          "title": "\uac00\uc838\uc624\uae30 \uc124\uc815",
+          "type": "string",
+          "enum": ["metadata_only", "metadata_and_content"]
+        },
+        "last_synced": {
+          "title": "\ub9c8\uc9c0\ub9c9 \ub3d9\uae30\ud654 \uc2dc\uac04",
+          "type": "string",
+          "format": "date-time",
+          "x-nullable": true
+        },
+        "created": {
+          "title": "Created",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "modified": {
+          "title": "Modified",
+          "type": "string",
+          "format": "date-time",
+          "readOnly": true
+        },
+        "platform": {
+          "title": "Platform",
+          "type": "integer"
+        },
+        "last_updated": {
+          "title": "Last updated",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    }
+  }
+}

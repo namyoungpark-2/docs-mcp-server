@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  # 개발 환경에서 볼륨 마운트 추가
+  mcp-server:
+    volumes:
+      - ./src:/app/src # 소스 코드 변경 시 즉시 반영
+      - ./build.gradle:/app/build.gradle
+      - ./settings.gradle:/app/settings.gradle
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker,dev
+    command: ["./gradlew", "bootRun", "--no-daemon"]
+
+  python-parser:
+    volumes:
+      - ./python-parser:/app # 소스 코드 변경 시 즉시 반영
+    environment:
+      - PYTHONPATH=/app
+    command: ["python", "main.py"]
+
+  # 개발용 데이터베이스 설정
+  postgres:
+    environment:
+      - POSTGRES_DB=mcp_docs_dev
+      - POSTGRES_USER=mcp_user
+      - POSTGRES_PASSWORD=mcp_password
+    ports:
+      - "5432:5432"

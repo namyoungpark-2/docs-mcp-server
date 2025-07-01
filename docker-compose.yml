@@ -1,0 +1,56 @@
+version: "3.8"
+
+volumes:
+  shared_repos: {} # 공유 볼륨 정의
+  postgres_data: {}
+
+services:
+  # MCP 서버 (Spring Boot)
+  mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - REPOS_DIRECTORY=/shared/repos
+    volumes:
+      - shared_repos:/shared/repos # 공유 볼륨 마운트
+    networks:
+      - mcp-network
+
+  # Python Parser 서비스
+  python-parser:
+    build:
+      context: ./python-parser
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - REPOS_DIRECTORY=/shared/repos
+    volumes:
+      - shared_repos:/shared/repos # 동일한 공유 볼륨 마운트
+    depends_on:
+      - mcp-server
+    networks:
+      - mcp-network
+
+  # PostgreSQL (필요시)
+  postgres:
+    image: postgres:16.1
+    restart: always
+    environment:
+      - POSTGRES_DB=mcp_docs
+      - POSTGRES_USER=mcp_user
+      - POSTGRES_PASSWORD=mcp_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - mcp-network
+
+networks:
+  mcp-network:
+    driver: bridge

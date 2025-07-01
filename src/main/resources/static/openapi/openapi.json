@@ -1,0 +1,3731 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ucms-be API Documentation",
+    "version": "1.0.0",
+    "description": "API documentation for ucms-be",
+    "framework": "django",
+    "project_path": "/Users/namyoungpark/Downloads/mcp-docs-server-final/shared_repos/ucms-be",
+    "total_endpoints": 34
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8009",
+      "description": "API Server"
+    }
+  ],
+  "paths": {
+    "/api/v1/": {
+      "get": {
+        "summary": "API endpoint: api/v1/",
+        "description": "Generated from main urls.py",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {}
+      }
+    },
+    "/api/v1/accounts/": {
+      "get": {
+        "summary": "API endpoint: api/v1/accounts/",
+        "description": "Generated from main urls.py",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {}
+      }
+    },
+    "/api/v1/projects/": {
+      "get": {
+        "summary": "API endpoint: api/v1/projects/",
+        "description": "Generated from main urls.py",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {}
+      }
+    },
+    "/api/v1/content/": {
+      "get": {
+        "summary": "List items",
+        "description": "Retrieve a list of items",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "title_en": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "slug": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "genre": {
+                        "type": "string",
+                        "maxLength": 100
+                      },
+                      "duration": {
+                        "type": "string",
+                        "description": "Method field"
+                      },
+                      "synopsis": {
+                        "type": "string"
+                      },
+                      "synopsis_en": {
+                        "type": "string"
+                      },
+                      "release_date_start": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "release_date_end": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "thumbnail": {
+                        "type": "string",
+                        "description": "Method field"
+                      },
+                      "active": {
+                        "type": "string",
+                        "description": "Method field"
+                      },
+                      "source_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "gracenote_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "episode_order": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      },
+                      "discovery_id": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "season": {
+                        "type": "string"
+                      },
+                      "cast": {
+                        "type": "string"
+                      },
+                      "categories": {
+                        "type": "string"
+                      },
+                      "mature_content": {
+                        "type": "boolean"
+                      },
+                      "program_guide": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "produce_country": {
+                        "type": "string",
+                        "enum": [
+                          "K",
+                          "C",
+                          "U"
+                        ]
+                      },
+                      "language": {
+                        "type": "string",
+                        "enum": [
+                          "k",
+                          "e",
+                          "j",
+                          "z",
+                          "z"
+                        ]
+                      },
+                      "upload_source": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "on_air": {
+                        "type": "boolean"
+                      },
+                      "on_air_date": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "drm_source": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "payment_type": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "regions": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "localizations": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "audio_info": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "resolution_info": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "film_code": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "available_country_group": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "license_start": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "license_end": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "additional_keywords": {
+                        "type": "string"
+                      },
+                      "custom_keywords": {
+                        "type": "string"
+                      },
+                      "content_stream_manifests": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "content_type": {
+                        "type": "string",
+                        "enum": [
+                          "m",
+                          "t",
+                          "t",
+                          "a",
+                          "c",
+                          "u"
+                        ]
+                      },
+                      "age_rating": {
+                        "type": "string",
+                        "enum": [
+                          "A",
+                          "P",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "N"
+                        ]
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "d",
+                          "p",
+                          "u"
+                        ]
+                      },
+                      "dubbing_mode": {
+                        "type": "string",
+                        "enum": [
+                          "i",
+                          "e",
+                          "d"
+                        ]
+                      },
+                      "contents_file": {
+                        "type": "string"
+                      },
+                      "created": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "modified": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "odk_meta": {
+                        "type": "string"
+                      },
+                      "platform": {
+                        "type": "string",
+                        "description": "Method field"
+                      },
+                      "distributions": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "subtitles": {
+                        "type": "string",
+                        "description": "Method field"
+                      }
+                    },
+                    "required": []
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create item",
+        "description": "Create a new item",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "title": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "title_en": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "slug": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "genre": {
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "duration": {
+                    "type": "string",
+                    "description": "Method field"
+                  },
+                  "synopsis": {
+                    "type": "string"
+                  },
+                  "synopsis_en": {
+                    "type": "string"
+                  },
+                  "release_date_start": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "release_date_end": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "thumbnail": {
+                    "type": "string",
+                    "description": "Method field"
+                  },
+                  "active": {
+                    "type": "string",
+                    "description": "Method field"
+                  },
+                  "source_id": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "gracenote_id": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "episode_order": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2147483647
+                  },
+                  "discovery_id": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "season": {
+                    "type": "string"
+                  },
+                  "cast": {
+                    "type": "string"
+                  },
+                  "categories": {
+                    "type": "string"
+                  },
+                  "mature_content": {
+                    "type": "boolean"
+                  },
+                  "program_guide": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "produce_country": {
+                    "type": "string",
+                    "enum": [
+                      "K",
+                      "C",
+                      "U"
+                    ]
+                  },
+                  "language": {
+                    "type": "string",
+                    "enum": [
+                      "k",
+                      "e",
+                      "j",
+                      "z",
+                      "z"
+                    ]
+                  },
+                  "upload_source": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "on_air": {
+                    "type": "boolean"
+                  },
+                  "on_air_date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "drm_source": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "payment_type": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "regions": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "localizations": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "audio_info": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "resolution_info": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "film_code": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "available_country_group": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "license_start": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "license_end": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "additional_keywords": {
+                    "type": "string"
+                  },
+                  "custom_keywords": {
+                    "type": "string"
+                  },
+                  "content_stream_manifests": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "content_type": {
+                    "type": "string",
+                    "enum": [
+                      "m",
+                      "t",
+                      "t",
+                      "a",
+                      "c",
+                      "u"
+                    ]
+                  },
+                  "age_rating": {
+                    "type": "string",
+                    "enum": [
+                      "A",
+                      "P",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "N"
+                    ]
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "d",
+                      "p",
+                      "u"
+                    ]
+                  },
+                  "dubbing_mode": {
+                    "type": "string",
+                    "enum": [
+                      "i",
+                      "e",
+                      "d"
+                    ]
+                  },
+                  "contents_file": {
+                    "type": "string"
+                  },
+                  "created": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "modified": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "odk_meta": {
+                    "type": "string"
+                  },
+                  "platform": {
+                    "type": "string",
+                    "description": "Method field"
+                  },
+                  "distributions": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "subtitles": {
+                    "type": "string",
+                    "description": "Method field"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Item created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "title_en": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "genre": {
+                      "type": "string",
+                      "maxLength": 100
+                    },
+                    "duration": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "synopsis": {
+                      "type": "string"
+                    },
+                    "synopsis_en": {
+                      "type": "string"
+                    },
+                    "release_date_start": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "release_date_end": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "thumbnail": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "active": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "source_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "gracenote_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "episode_order": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 2147483647
+                    },
+                    "discovery_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "season": {
+                      "type": "string"
+                    },
+                    "cast": {
+                      "type": "string"
+                    },
+                    "categories": {
+                      "type": "string"
+                    },
+                    "mature_content": {
+                      "type": "boolean"
+                    },
+                    "program_guide": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "produce_country": {
+                      "type": "string",
+                      "enum": [
+                        "K",
+                        "C",
+                        "U"
+                      ]
+                    },
+                    "language": {
+                      "type": "string",
+                      "enum": [
+                        "k",
+                        "e",
+                        "j",
+                        "z",
+                        "z"
+                      ]
+                    },
+                    "upload_source": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "on_air": {
+                      "type": "boolean"
+                    },
+                    "on_air_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "drm_source": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "payment_type": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "regions": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "localizations": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "audio_info": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "resolution_info": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "film_code": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "available_country_group": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "license_start": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "license_end": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "additional_keywords": {
+                      "type": "string"
+                    },
+                    "custom_keywords": {
+                      "type": "string"
+                    },
+                    "content_stream_manifests": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "content_type": {
+                      "type": "string",
+                      "enum": [
+                        "m",
+                        "t",
+                        "t",
+                        "a",
+                        "c",
+                        "u"
+                      ]
+                    },
+                    "age_rating": {
+                      "type": "string",
+                      "enum": [
+                        "A",
+                        "P",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "N"
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "d",
+                        "p",
+                        "u"
+                      ]
+                    },
+                    "dubbing_mode": {
+                      "type": "string",
+                      "enum": [
+                        "i",
+                        "e",
+                        "d"
+                      ]
+                    },
+                    "contents_file": {
+                      "type": "string"
+                    },
+                    "created": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "modified": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "odk_meta": {
+                      "type": "string"
+                    },
+                    "platform": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "distributions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "subtitles": {
+                      "type": "string",
+                      "description": "Method field"
+                    }
+                  },
+                  "required": []
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/season/": {
+      "get": {
+        "summary": "List items",
+        "description": "Retrieve a list of items",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "title_en": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "synopsis": {
+                        "type": "string"
+                      },
+                      "synopsis_en": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "d",
+                          "p",
+                          "u"
+                        ]
+                      },
+                      "dubbing_mode": {
+                        "type": "string",
+                        "enum": [
+                          "i",
+                          "e",
+                          "d"
+                        ]
+                      },
+                      "slug": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "season_order": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 2147483647
+                      },
+                      "age_rating": {
+                        "type": "string",
+                        "enum": [
+                          "A",
+                          "P",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "N"
+                        ]
+                      },
+                      "release_date_start": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "release_date_end": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "poster": {
+                        "type": "string",
+                        "description": "Method field"
+                      },
+                      "posters": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "cast": {
+                        "type": "string"
+                      },
+                      "series": {
+                        "type": "string"
+                      },
+                      "contents": {
+                        "type": "string"
+                      },
+                      "categories": {
+                        "type": "string"
+                      },
+                      "program_meta": {
+                        "type": "string"
+                      },
+                      "is_deletable": {
+                        "type": "string",
+                        "description": "Method field"
+                      }
+                    },
+                    "required": [
+                      "title"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create item",
+        "description": "Create a new item",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "title": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "title_en": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "synopsis": {
+                    "type": "string"
+                  },
+                  "synopsis_en": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "d",
+                      "p",
+                      "u"
+                    ]
+                  },
+                  "dubbing_mode": {
+                    "type": "string",
+                    "enum": [
+                      "i",
+                      "e",
+                      "d"
+                    ]
+                  },
+                  "slug": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "season_order": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2147483647
+                  },
+                  "age_rating": {
+                    "type": "string",
+                    "enum": [
+                      "A",
+                      "P",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "N"
+                    ]
+                  },
+                  "release_date_start": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "release_date_end": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "poster": {
+                    "type": "string",
+                    "description": "Method field"
+                  },
+                  "posters": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "cast": {
+                    "type": "string"
+                  },
+                  "series": {
+                    "type": "string"
+                  },
+                  "contents": {
+                    "type": "string"
+                  },
+                  "categories": {
+                    "type": "string"
+                  },
+                  "program_meta": {
+                    "type": "string"
+                  },
+                  "is_deletable": {
+                    "type": "string",
+                    "description": "Method field"
+                  }
+                },
+                "required": [
+                  "title"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Item created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "title_en": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "synopsis": {
+                      "type": "string"
+                    },
+                    "synopsis_en": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "d",
+                        "p",
+                        "u"
+                      ]
+                    },
+                    "dubbing_mode": {
+                      "type": "string",
+                      "enum": [
+                        "i",
+                        "e",
+                        "d"
+                      ]
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "season_order": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 2147483647
+                    },
+                    "age_rating": {
+                      "type": "string",
+                      "enum": [
+                        "A",
+                        "P",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "N"
+                      ]
+                    },
+                    "release_date_start": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "release_date_end": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "poster": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "posters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "cast": {
+                      "type": "string"
+                    },
+                    "series": {
+                      "type": "string"
+                    },
+                    "contents": {
+                      "type": "string"
+                    },
+                    "categories": {
+                      "type": "string"
+                    },
+                    "program_meta": {
+                      "type": "string"
+                    },
+                    "is_deletable": {
+                      "type": "string",
+                      "description": "Method field"
+                    }
+                  },
+                  "required": [
+                    "title"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/series/": {
+      "get": {
+        "summary": "List items",
+        "description": "Retrieve a list of items",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "title": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "title_en": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "synopsis": {
+                        "type": "string"
+                      },
+                      "synopsis_en": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "d",
+                          "p",
+                          "u"
+                        ]
+                      },
+                      "dubbing_mode": {
+                        "type": "string",
+                        "enum": [
+                          "i",
+                          "e",
+                          "d"
+                        ]
+                      },
+                      "slug": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "release_date_start": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "release_date_end": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "categories": {
+                        "type": "string"
+                      },
+                      "poster": {
+                        "type": "string",
+                        "description": "Method field"
+                      },
+                      "posters": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "cast": {
+                        "type": "string"
+                      },
+                      "age_rating": {
+                        "type": "string",
+                        "enum": [
+                          "A",
+                          "P",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "R",
+                          "N"
+                        ]
+                      },
+                      "produce_country": {
+                        "type": "string",
+                        "enum": [
+                          "K",
+                          "C",
+                          "U"
+                        ]
+                      },
+                      "seasons": {
+                        "type": "string"
+                      },
+                      "is_deletable": {
+                        "type": "string",
+                        "description": "Method field"
+                      }
+                    },
+                    "required": [
+                      "title"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create item",
+        "description": "Create a new item",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "title": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "title_en": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "synopsis": {
+                    "type": "string"
+                  },
+                  "synopsis_en": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "d",
+                      "p",
+                      "u"
+                    ]
+                  },
+                  "dubbing_mode": {
+                    "type": "string",
+                    "enum": [
+                      "i",
+                      "e",
+                      "d"
+                    ]
+                  },
+                  "slug": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "release_date_start": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "release_date_end": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "categories": {
+                    "type": "string"
+                  },
+                  "poster": {
+                    "type": "string",
+                    "description": "Method field"
+                  },
+                  "posters": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "cast": {
+                    "type": "string"
+                  },
+                  "age_rating": {
+                    "type": "string",
+                    "enum": [
+                      "A",
+                      "P",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "N"
+                    ]
+                  },
+                  "produce_country": {
+                    "type": "string",
+                    "enum": [
+                      "K",
+                      "C",
+                      "U"
+                    ]
+                  },
+                  "seasons": {
+                    "type": "string"
+                  },
+                  "is_deletable": {
+                    "type": "string",
+                    "description": "Method field"
+                  }
+                },
+                "required": [
+                  "title"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Item created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "title_en": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "synopsis": {
+                      "type": "string"
+                    },
+                    "synopsis_en": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "d",
+                        "p",
+                        "u"
+                      ]
+                    },
+                    "dubbing_mode": {
+                      "type": "string",
+                      "enum": [
+                        "i",
+                        "e",
+                        "d"
+                      ]
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "release_date_start": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "release_date_end": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "categories": {
+                      "type": "string"
+                    },
+                    "poster": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "posters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "cast": {
+                      "type": "string"
+                    },
+                    "age_rating": {
+                      "type": "string",
+                      "enum": [
+                        "A",
+                        "P",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "N"
+                      ]
+                    },
+                    "produce_country": {
+                      "type": "string",
+                      "enum": [
+                        "K",
+                        "C",
+                        "U"
+                      ]
+                    },
+                    "seasons": {
+                      "type": "string"
+                    },
+                    "is_deletable": {
+                      "type": "string",
+                      "description": "Method field"
+                    }
+                  },
+                  "required": [
+                    "title"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/playlist/": {
+      "get": {
+        "summary": "API endpoint: api/v1/playlist/",
+        "description": "Generated from main urls.py",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {}
+      }
+    },
+    "/api/v1/video-source/": {
+      "get": {
+        "summary": "API endpoint: api/v1/video-source/",
+        "description": "Generated from main urls.py",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {}
+      }
+    },
+    "/api/v1/contracts/": {
+      "get": {
+        "summary": "API endpoint: api/v1/contracts/",
+        "description": "Generated from main urls.py",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {}
+      }
+    },
+    "/api/v1/revenues/": {
+      "get": {
+        "summary": "API endpoint: api/v1/revenues/",
+        "description": "Generated from main urls.py",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {}
+      }
+    },
+    "/api/v1/menus/": {
+      "get": {
+        "summary": "API endpoint: api/v1/menus/",
+        "description": "Generated from main urls.py",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {}
+      }
+    },
+    "/api/v1/roles/": {
+      "get": {
+        "summary": "API endpoint: api/v1/roles/",
+        "description": "Generated from main urls.py",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {}
+      }
+    },
+    "/api/v1/permissions/": {
+      "get": {
+        "summary": "API endpoint: api/v1/permissions/",
+        "description": "Generated from main urls.py",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {}
+      }
+    },
+    "/api/v1/history/": {
+      "get": {
+        "summary": "API endpoint: api/v1/history/",
+        "description": "Generated from main urls.py",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {}
+      }
+    },
+    "/api/v1/series/{id}/": {
+      "get": {
+        "summary": "Retrieve item",
+        "description": "Retrieve a specific item by ID",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Item ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": null
+          }
+        ],
+        "requestBody": null,
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "title_en": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "synopsis": {
+                      "type": "string"
+                    },
+                    "synopsis_en": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "d",
+                        "p",
+                        "u"
+                      ]
+                    },
+                    "dubbing_mode": {
+                      "type": "string",
+                      "enum": [
+                        "i",
+                        "e",
+                        "d"
+                      ]
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "release_date_start": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "release_date_end": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "categories": {
+                      "type": "string"
+                    },
+                    "poster": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "posters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "cast": {
+                      "type": "string"
+                    },
+                    "age_rating": {
+                      "type": "string",
+                      "enum": [
+                        "A",
+                        "P",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "N"
+                      ]
+                    },
+                    "produce_country": {
+                      "type": "string",
+                      "enum": [
+                        "K",
+                        "C",
+                        "U"
+                      ]
+                    },
+                    "seasons": {
+                      "type": "string"
+                    },
+                    "is_deletable": {
+                      "type": "string",
+                      "description": "Method field"
+                    }
+                  },
+                  "required": [
+                    "title"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update item",
+        "description": "Update a specific item by ID",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Item ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": null
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "title": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "title_en": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "synopsis": {
+                    "type": "string"
+                  },
+                  "synopsis_en": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "d",
+                      "p",
+                      "u"
+                    ]
+                  },
+                  "dubbing_mode": {
+                    "type": "string",
+                    "enum": [
+                      "i",
+                      "e",
+                      "d"
+                    ]
+                  },
+                  "slug": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "release_date_start": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "release_date_end": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "categories": {
+                    "type": "string"
+                  },
+                  "poster": {
+                    "type": "string",
+                    "description": "Method field"
+                  },
+                  "posters": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "cast": {
+                    "type": "string"
+                  },
+                  "age_rating": {
+                    "type": "string",
+                    "enum": [
+                      "A",
+                      "P",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "N"
+                    ]
+                  },
+                  "produce_country": {
+                    "type": "string",
+                    "enum": [
+                      "K",
+                      "C",
+                      "U"
+                    ]
+                  },
+                  "seasons": {
+                    "type": "string"
+                  },
+                  "is_deletable": {
+                    "type": "string",
+                    "description": "Method field"
+                  }
+                },
+                "required": [
+                  "title"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Item updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "title_en": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "synopsis": {
+                      "type": "string"
+                    },
+                    "synopsis_en": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "d",
+                        "p",
+                        "u"
+                      ]
+                    },
+                    "dubbing_mode": {
+                      "type": "string",
+                      "enum": [
+                        "i",
+                        "e",
+                        "d"
+                      ]
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "release_date_start": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "release_date_end": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "categories": {
+                      "type": "string"
+                    },
+                    "poster": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "posters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "cast": {
+                      "type": "string"
+                    },
+                    "age_rating": {
+                      "type": "string",
+                      "enum": [
+                        "A",
+                        "P",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "N"
+                      ]
+                    },
+                    "produce_country": {
+                      "type": "string",
+                      "enum": [
+                        "K",
+                        "C",
+                        "U"
+                      ]
+                    },
+                    "seasons": {
+                      "type": "string"
+                    },
+                    "is_deletable": {
+                      "type": "string",
+                      "description": "Method field"
+                    }
+                  },
+                  "required": [
+                    "title"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete item",
+        "description": "Delete a specific item by ID",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Item ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": null
+          }
+        ],
+        "requestBody": null,
+        "responses": {
+          "204": {
+            "description": "Item deleted successfully"
+          }
+        }
+      }
+    },
+    "/api/v1/content/{id}/": {
+      "get": {
+        "summary": "Retrieve item",
+        "description": "Retrieve a specific item by ID",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Item ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": null
+          }
+        ],
+        "requestBody": null,
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "title_en": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "genre": {
+                      "type": "string",
+                      "maxLength": 100
+                    },
+                    "duration": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "synopsis": {
+                      "type": "string"
+                    },
+                    "synopsis_en": {
+                      "type": "string"
+                    },
+                    "release_date_start": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "release_date_end": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "thumbnail": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "active": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "source_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "gracenote_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "episode_order": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 2147483647
+                    },
+                    "discovery_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "season": {
+                      "type": "string"
+                    },
+                    "cast": {
+                      "type": "string"
+                    },
+                    "categories": {
+                      "type": "string"
+                    },
+                    "mature_content": {
+                      "type": "boolean"
+                    },
+                    "program_guide": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "produce_country": {
+                      "type": "string",
+                      "enum": [
+                        "K",
+                        "C",
+                        "U"
+                      ]
+                    },
+                    "language": {
+                      "type": "string",
+                      "enum": [
+                        "k",
+                        "e",
+                        "j",
+                        "z",
+                        "z"
+                      ]
+                    },
+                    "upload_source": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "on_air": {
+                      "type": "boolean"
+                    },
+                    "on_air_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "drm_source": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "payment_type": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "regions": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "localizations": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "audio_info": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "resolution_info": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "film_code": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "available_country_group": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "license_start": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "license_end": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "additional_keywords": {
+                      "type": "string"
+                    },
+                    "custom_keywords": {
+                      "type": "string"
+                    },
+                    "content_stream_manifests": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "content_type": {
+                      "type": "string",
+                      "enum": [
+                        "m",
+                        "t",
+                        "t",
+                        "a",
+                        "c",
+                        "u"
+                      ]
+                    },
+                    "age_rating": {
+                      "type": "string",
+                      "enum": [
+                        "A",
+                        "P",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "N"
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "d",
+                        "p",
+                        "u"
+                      ]
+                    },
+                    "dubbing_mode": {
+                      "type": "string",
+                      "enum": [
+                        "i",
+                        "e",
+                        "d"
+                      ]
+                    },
+                    "contents_file": {
+                      "type": "string"
+                    },
+                    "created": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "modified": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "odk_meta": {
+                      "type": "string"
+                    },
+                    "platform": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "distributions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "subtitles": {
+                      "type": "string",
+                      "description": "Method field"
+                    }
+                  },
+                  "required": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update item",
+        "description": "Update a specific item by ID",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Item ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": null
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "title": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "title_en": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "slug": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "genre": {
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "duration": {
+                    "type": "string",
+                    "description": "Method field"
+                  },
+                  "synopsis": {
+                    "type": "string"
+                  },
+                  "synopsis_en": {
+                    "type": "string"
+                  },
+                  "release_date_start": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "release_date_end": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "thumbnail": {
+                    "type": "string",
+                    "description": "Method field"
+                  },
+                  "active": {
+                    "type": "string",
+                    "description": "Method field"
+                  },
+                  "source_id": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "gracenote_id": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "episode_order": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2147483647
+                  },
+                  "discovery_id": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "season": {
+                    "type": "string"
+                  },
+                  "cast": {
+                    "type": "string"
+                  },
+                  "categories": {
+                    "type": "string"
+                  },
+                  "mature_content": {
+                    "type": "boolean"
+                  },
+                  "program_guide": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "produce_country": {
+                    "type": "string",
+                    "enum": [
+                      "K",
+                      "C",
+                      "U"
+                    ]
+                  },
+                  "language": {
+                    "type": "string",
+                    "enum": [
+                      "k",
+                      "e",
+                      "j",
+                      "z",
+                      "z"
+                    ]
+                  },
+                  "upload_source": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "on_air": {
+                    "type": "boolean"
+                  },
+                  "on_air_date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "drm_source": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "payment_type": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "regions": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "localizations": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "audio_info": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "resolution_info": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "film_code": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "available_country_group": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "license_start": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "license_end": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "additional_keywords": {
+                    "type": "string"
+                  },
+                  "custom_keywords": {
+                    "type": "string"
+                  },
+                  "content_stream_manifests": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "content_type": {
+                    "type": "string",
+                    "enum": [
+                      "m",
+                      "t",
+                      "t",
+                      "a",
+                      "c",
+                      "u"
+                    ]
+                  },
+                  "age_rating": {
+                    "type": "string",
+                    "enum": [
+                      "A",
+                      "P",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "N"
+                    ]
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "d",
+                      "p",
+                      "u"
+                    ]
+                  },
+                  "dubbing_mode": {
+                    "type": "string",
+                    "enum": [
+                      "i",
+                      "e",
+                      "d"
+                    ]
+                  },
+                  "contents_file": {
+                    "type": "string"
+                  },
+                  "created": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "modified": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "odk_meta": {
+                    "type": "string"
+                  },
+                  "platform": {
+                    "type": "string",
+                    "description": "Method field"
+                  },
+                  "distributions": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "subtitles": {
+                    "type": "string",
+                    "description": "Method field"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Item updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "title_en": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "genre": {
+                      "type": "string",
+                      "maxLength": 100
+                    },
+                    "duration": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "synopsis": {
+                      "type": "string"
+                    },
+                    "synopsis_en": {
+                      "type": "string"
+                    },
+                    "release_date_start": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "release_date_end": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "thumbnail": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "active": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "source_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "gracenote_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "episode_order": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 2147483647
+                    },
+                    "discovery_id": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "season": {
+                      "type": "string"
+                    },
+                    "cast": {
+                      "type": "string"
+                    },
+                    "categories": {
+                      "type": "string"
+                    },
+                    "mature_content": {
+                      "type": "boolean"
+                    },
+                    "program_guide": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "produce_country": {
+                      "type": "string",
+                      "enum": [
+                        "K",
+                        "C",
+                        "U"
+                      ]
+                    },
+                    "language": {
+                      "type": "string",
+                      "enum": [
+                        "k",
+                        "e",
+                        "j",
+                        "z",
+                        "z"
+                      ]
+                    },
+                    "upload_source": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "on_air": {
+                      "type": "boolean"
+                    },
+                    "on_air_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "drm_source": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "payment_type": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "regions": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "localizations": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "audio_info": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "resolution_info": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "film_code": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "available_country_group": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "license_start": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "license_end": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "additional_keywords": {
+                      "type": "string"
+                    },
+                    "custom_keywords": {
+                      "type": "string"
+                    },
+                    "content_stream_manifests": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "content_type": {
+                      "type": "string",
+                      "enum": [
+                        "m",
+                        "t",
+                        "t",
+                        "a",
+                        "c",
+                        "u"
+                      ]
+                    },
+                    "age_rating": {
+                      "type": "string",
+                      "enum": [
+                        "A",
+                        "P",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "N"
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "d",
+                        "p",
+                        "u"
+                      ]
+                    },
+                    "dubbing_mode": {
+                      "type": "string",
+                      "enum": [
+                        "i",
+                        "e",
+                        "d"
+                      ]
+                    },
+                    "contents_file": {
+                      "type": "string"
+                    },
+                    "created": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "modified": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "odk_meta": {
+                      "type": "string"
+                    },
+                    "platform": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "distributions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "subtitles": {
+                      "type": "string",
+                      "description": "Method field"
+                    }
+                  },
+                  "required": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete item",
+        "description": "Delete a specific item by ID",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Item ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": null
+          }
+        ],
+        "requestBody": null,
+        "responses": {
+          "204": {
+            "description": "Item deleted successfully"
+          }
+        }
+      }
+    },
+    "/api/v1/season/{id}/": {
+      "get": {
+        "summary": "Retrieve item",
+        "description": "Retrieve a specific item by ID",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Item ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": null
+          }
+        ],
+        "requestBody": null,
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "title_en": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "synopsis": {
+                      "type": "string"
+                    },
+                    "synopsis_en": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "d",
+                        "p",
+                        "u"
+                      ]
+                    },
+                    "dubbing_mode": {
+                      "type": "string",
+                      "enum": [
+                        "i",
+                        "e",
+                        "d"
+                      ]
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "season_order": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 2147483647
+                    },
+                    "age_rating": {
+                      "type": "string",
+                      "enum": [
+                        "A",
+                        "P",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "N"
+                      ]
+                    },
+                    "release_date_start": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "release_date_end": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "poster": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "posters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "cast": {
+                      "type": "string"
+                    },
+                    "series": {
+                      "type": "string"
+                    },
+                    "contents": {
+                      "type": "string"
+                    },
+                    "categories": {
+                      "type": "string"
+                    },
+                    "program_meta": {
+                      "type": "string"
+                    },
+                    "is_deletable": {
+                      "type": "string",
+                      "description": "Method field"
+                    }
+                  },
+                  "required": [
+                    "title"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update item",
+        "description": "Update a specific item by ID",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Item ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": null
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "title": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "title_en": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "synopsis": {
+                    "type": "string"
+                  },
+                  "synopsis_en": {
+                    "type": "string"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "d",
+                      "p",
+                      "u"
+                    ]
+                  },
+                  "dubbing_mode": {
+                    "type": "string",
+                    "enum": [
+                      "i",
+                      "e",
+                      "d"
+                    ]
+                  },
+                  "slug": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "season_order": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 2147483647
+                  },
+                  "age_rating": {
+                    "type": "string",
+                    "enum": [
+                      "A",
+                      "P",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "R",
+                      "N"
+                    ]
+                  },
+                  "release_date_start": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "release_date_end": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "poster": {
+                    "type": "string",
+                    "description": "Method field"
+                  },
+                  "posters": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "cast": {
+                    "type": "string"
+                  },
+                  "series": {
+                    "type": "string"
+                  },
+                  "contents": {
+                    "type": "string"
+                  },
+                  "categories": {
+                    "type": "string"
+                  },
+                  "program_meta": {
+                    "type": "string"
+                  },
+                  "is_deletable": {
+                    "type": "string",
+                    "description": "Method field"
+                  }
+                },
+                "required": [
+                  "title"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Item updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "title": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "title_en": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "synopsis": {
+                      "type": "string"
+                    },
+                    "synopsis_en": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "d",
+                        "p",
+                        "u"
+                      ]
+                    },
+                    "dubbing_mode": {
+                      "type": "string",
+                      "enum": [
+                        "i",
+                        "e",
+                        "d"
+                      ]
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "season_order": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 2147483647
+                    },
+                    "age_rating": {
+                      "type": "string",
+                      "enum": [
+                        "A",
+                        "P",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "R",
+                        "N"
+                      ]
+                    },
+                    "release_date_start": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "release_date_end": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "poster": {
+                      "type": "string",
+                      "description": "Method field"
+                    },
+                    "posters": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "cast": {
+                      "type": "string"
+                    },
+                    "series": {
+                      "type": "string"
+                    },
+                    "contents": {
+                      "type": "string"
+                    },
+                    "categories": {
+                      "type": "string"
+                    },
+                    "program_meta": {
+                      "type": "string"
+                    },
+                    "is_deletable": {
+                      "type": "string",
+                      "description": "Method field"
+                    }
+                  },
+                  "required": [
+                    "title"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete item",
+        "description": "Delete a specific item by ID",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Item ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": null
+          }
+        ],
+        "requestBody": null,
+        "responses": {
+          "204": {
+            "description": "Item deleted successfully"
+          }
+        }
+      }
+    },
+    "/api/v1/cast/": {
+      "get": {
+        "summary": "List items",
+        "description": "Retrieve a list of items",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": null,
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "name": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "name_en": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "slug": {
+                        "type": "string",
+                        "maxLength": 256
+                      },
+                      "gender": {
+                        "type": "string",
+                        "maxLength": 10
+                      },
+                      "birth_date": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "death_date": {
+                        "type": "string",
+                        "format": "date"
+                      },
+                      "nationality": {
+                        "type": "string",
+                        "maxLength": 100
+                      },
+                      "official_site": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "sns_link": {
+                        "type": "string",
+                        "maxLength": 255
+                      },
+                      "thumbnail": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "a",
+                          "d",
+                          "w",
+                          "p",
+                          "c",
+                          "v"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create item",
+        "description": "Create a new item",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "name_en": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "slug": {
+                    "type": "string",
+                    "maxLength": 256
+                  },
+                  "gender": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "birth_date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "death_date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "nationality": {
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "official_site": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "sns_link": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "thumbnail": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "a",
+                      "d",
+                      "w",
+                      "p",
+                      "c",
+                      "v"
+                    ]
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Item created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "name_en": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 256
+                    },
+                    "gender": {
+                      "type": "string",
+                      "maxLength": 10
+                    },
+                    "birth_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "death_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "nationality": {
+                      "type": "string",
+                      "maxLength": 100
+                    },
+                    "official_site": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "sns_link": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "thumbnail": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "a",
+                        "d",
+                        "w",
+                        "p",
+                        "c",
+                        "v"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/cast/{id}/": {
+      "get": {
+        "summary": "Retrieve item",
+        "description": "Retrieve a specific item by ID",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Item ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": null
+          }
+        ],
+        "requestBody": null,
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "name_en": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 256
+                    },
+                    "gender": {
+                      "type": "string",
+                      "maxLength": 10
+                    },
+                    "birth_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "death_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "nationality": {
+                      "type": "string",
+                      "maxLength": 100
+                    },
+                    "official_site": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "sns_link": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "thumbnail": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "a",
+                        "d",
+                        "w",
+                        "p",
+                        "c",
+                        "v"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update item",
+        "description": "Update a specific item by ID",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Item ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": null
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "name_en": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "slug": {
+                    "type": "string",
+                    "maxLength": 256
+                  },
+                  "gender": {
+                    "type": "string",
+                    "maxLength": 10
+                  },
+                  "birth_date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "death_date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "nationality": {
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "official_site": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "sns_link": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "thumbnail": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "a",
+                      "d",
+                      "w",
+                      "p",
+                      "c",
+                      "v"
+                    ]
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Item updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "name_en": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "slug": {
+                      "type": "string",
+                      "maxLength": 256
+                    },
+                    "gender": {
+                      "type": "string",
+                      "maxLength": 10
+                    },
+                    "birth_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "death_date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "nationality": {
+                      "type": "string",
+                      "maxLength": 100
+                    },
+                    "official_site": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "sns_link": {
+                      "type": "string",
+                      "maxLength": 255
+                    },
+                    "thumbnail": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "a",
+                        "d",
+                        "w",
+                        "p",
+                        "c",
+                        "v"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "name"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete item",
+        "description": "Delete a specific item by ID",
+        "tags": [
+          "django"
+        ],
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Item ID",
+            "schema": {
+              "type": "integer"
+            },
+            "example": null
+          }
+        ],
+        "requestBody": null,
+        "responses": {
+          "204": {
+            "description": "Item deleted successfully"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "django"
+    }
+  ]
+}

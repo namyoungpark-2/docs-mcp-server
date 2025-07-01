@@ -1,0 +1,31 @@
+INFO:     Will watch for changes in these directories: ['/Users/namyoungpark/Downloads/mcp-docs-server-final/python-parser']
+INFO:     Uvicorn running on http://0.0.0.0:8009 (Press CTRL+C to quit)
+INFO:     Started reloader process [70401] using WatchFiles
+INFO:     Started server process [70537]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+[문서 자동화] Django 환경 설정 완료: /Users/namyoungpark/Downloads/mcp-docs-server-final/shared_repos/ucms-be/app
+[문서 자동화] SeriesViewSet 파일 경로: /Users/namyoungpark/Downloads/mcp-docs-server-final/shared_repos/ucms-be/app/series/views.py
+[문서 자동화] 5개 CRUD 엔드포인트 생성 완료
+[문서 자동화] SeriesViewSet에서 5개 엔드포인트 추출 완료
+[문서 자동화] ContentViewSet 파일 경로: /Users/namyoungpark/Downloads/mcp-docs-server-final/shared_repos/ucms-be/app/content/views/content.py
+[문서 자동화] 5개 CRUD 엔드포인트 생성 완료
+[문서 자동화] ContentViewSet에서 5개 엔드포인트 추출 완료
+[문서 자동화] SeasonViewSet 파일 경로: /Users/namyoungpark/Downloads/mcp-docs-server-final/shared_repos/ucms-be/app/season/views.py
+[문서 자동화] 5개 CRUD 엔드포인트 생성 완료
+[문서 자동화] SeasonViewSet에서 5개 엔드포인트 추출 완료
+[문서 자동화] CastViewSet 파일 경로: /Users/namyoungpark/Downloads/mcp-docs-server-final/shared_repos/ucms-be/app/cast/views.py
+[문서 자동화] 5개 CRUD 엔드포인트 생성 완료
+[문서 자동화] CastViewSet에서 5개 엔드포인트 추출 완료
+[DEBUG] 생성된 엔드포인트 개수: 34
+[DEBUG] OpenAPI dict keys: ['openapi', 'info', 'servers', 'paths', 'tags']
+[DEBUG] OpenAPI paths keys: ['/api/v1/', '/api/v1/accounts/', '/api/v1/projects/', '/api/v1/content/', '/api/v1/season/', '/api/v1/series/', '/api/v1/playlist/', '/api/v1/video-source/', '/api/v1/contracts/', '/api/v1/revenues/', '/api/v1/menus/', '/api/v1/roles/', '/api/v1/permissions/', '/api/v1/history/', '/api/v1/series/{id}/', '/api/v1/content/{id}/', '/api/v1/season/{id}/', '/api/v1/cast/', '/api/v1/cast/{id}/']
+INFO:     127.0.0.1:55845 - "POST /api/v1/docs/generate/ucms-be?base_url=http://localhost:8009 HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'src/infrastructure/generators/api_documentation_generator.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [70537]
+INFO:     Started server process [72286]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.

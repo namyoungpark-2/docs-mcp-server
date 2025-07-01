@@ -1,0 +1,49 @@
+# Git 관련
+.git
+.gitignore
+
+# IDE 관련
+.idea/
+.vscode/
+*.iml
+
+# OS 관련
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Test files
+tests/
+*_test.py
+test_*.py
+
+# Documentation
+README.md
+*.md
+docs/
+
+# Docker files
+Dockerfile*
+docker-compose*
+.dockerignore 

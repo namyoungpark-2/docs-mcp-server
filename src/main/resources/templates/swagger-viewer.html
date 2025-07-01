@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ODK API Docs</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        background-color: #f9f9fb;
+      }
+
+      .header {
+        background-color: #2d3748;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .header .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .header .env-label {
+        font-size: 0.9rem;
+        color: #cbd5e0;
+      }
+
+      redoc {
+        display: block;
+        height: 100vh;
+      }
+
+      footer {
+        text-align: center;
+        font-size: 0.85rem;
+        color: #aaa;
+        margin: 1rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="logo">ODK API Docs</div>
+      <div class="env-label">Internal Use Only</div>
+    </div>
+
+    <redoc spec-url="${specUrl}"></redoc>
+
+    <footer>© 2025 ODK Media Inc. All rights reserved.</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"></script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+Django>=3.2
+djangorestframework>=3.12.4
+astunparse>=1.6.3
+jsonschema>=4.0.0
