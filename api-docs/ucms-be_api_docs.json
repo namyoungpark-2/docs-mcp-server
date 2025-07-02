@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "description": "ucms-be",
     "framework": "django",
-    "project_path": "/Users/namyoungpark/Downloads/mcp-docs-server-final/shared_repos/ucms-be",
+    "project_path": "/Users/namyoungpark/docs-mcp-server/shared_repos/ucms-be",
     "total_endpoints": 125
   },
   "servers": [

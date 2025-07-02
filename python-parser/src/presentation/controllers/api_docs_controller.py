@@ -36,6 +36,7 @@ async def generate_api_documentation(
 ):
     """특정 프로젝트의 API 문서 생성"""
     try:
+        print(f"REPOS_DIRECTORY : {REPOS_DIRECTORY}")
         project_path = Path(REPOS_DIRECTORY) / project_name
         if not project_path.exists():
             raise HTTPException(
@@ -45,7 +46,7 @@ async def generate_api_documentation(
         # 출력 파일 설정
         output_file = None
         if save_to_file:
-            output_dir = Path("generated_docs")
+            output_dir = Path(os.path.join(os.path.dirname(os.getcwd()), "api-docs"))
             output_dir.mkdir(exist_ok=True)
             output_file = output_dir / f"{project_name}_api_docs.json"
 
