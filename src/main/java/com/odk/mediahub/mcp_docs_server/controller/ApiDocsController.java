@@ -2,6 +2,7 @@ package com.odk.mediahub.mcp_docs_server.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
 import org.springframework.core.io.ClassPathResource;
@@ -22,11 +23,13 @@ import com.odk.mediahub.mcp_docs_server.dto.ApiDocsRequestDto;
 public class ApiDocsController {
 
     @GetMapping(value = "/api-docs/html", produces = MediaType.TEXT_HTML_VALUE)
-    public ResponseEntity<String> getApiDocsHtml(@RequestBody ApiDocsRequestDto request) {
+    public ResponseEntity<String> getApiDocsHtml(
+            @RequestParam String repo,
+            @RequestParam String branch) {
         try {
             Resource resource = new ClassPathResource(FilePath.SWAGGER_VIEWER_HTML);
             String html = new String(resource.getInputStream().readAllBytes());
-            html = html.replace("${specUrl}", request.getRepo() + "/" + request.getBranch());
+            html = html.replace("${specUrl}", repo + "/" + branch);
             return ResponseEntity.ok(html);
             
         } catch (IOException e) {
@@ -36,9 +39,9 @@ public class ApiDocsController {
     }
 
     @GetMapping(value = "/api-docs/json", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> getApiDocsJson(@RequestBody ApiDocsRequestDto request) {
+    public ResponseEntity<String> getApiDocsJson() {
         try {
-            String docsPath = FilePath.API_DOCS_DIRECTORY + FilePath.API_DOCS_JSON;
+            String docsPath = FilePath.API_DOCS_DIRECTORY + "/ucms-be_api_docs.json";
             
             String jsonContent = new String(Files.readAllBytes(Paths.get(docsPath)));
             
